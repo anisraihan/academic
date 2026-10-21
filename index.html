@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Anis Raihan Dzeidee Schaff is an interdisciplinary researcher working in adolescent mental health, parenting, human development, and digital health.">
+<title>Anis Raihan Dzeidee Schaff | Academic Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap');
+:root{
+  --paper:#ffffff; --paper-deep:#ffffff; --ink:#252720; --muted:#696b61;
+  --line:#e1e1da; --accent:#52695e; --accent-light:#f4f5f2; --white:#ffffff;
+  --serif: "EB Garamond", Garamond, "Times New Roman", serif; --sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+*{box-sizing:border-box}
+[role="tabpanel"][hidden]{display:none !important}
+[role="tabpanel"]:focus{outline:none}
+
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.site-header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-wrap{max-width:1160px;margin:auto;padding:0 28px;min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-family:var(--serif);font-style:italic;font-weight:700;font-size:20px;letter-spacing:-.035em;white-space:nowrap}
+.brand small{display:block;font:9px/1.5 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+nav{display:flex;align-items:center;gap:18px}
+nav a{font-size:11px;color:var(--muted);transition:color .2s;white-space:nowrap}
+nav a:hover,nav a.active{color:var(--ink)}
+nav a.active{box-shadow:inset 0 -1px var(--accent);padding-bottom:7px}
+.menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:50%;width:40px;height:40px;font-size:18px;color:var(--ink)}
+main{max-width:1160px;margin:auto;padding:0 28px}
+section{scroll-margin-top:100px}
+.hero{min-height:560px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:70px;padding:82px 0 94px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:var(--accent);font-weight:600}
+h1,h2,h3,p{margin-top:0}
+h1{font:italic 700 clamp(46px,6vw,76px)/1.04 var(--serif);letter-spacing:-.055em;margin:23px 0 25px;max-width:680px}
+h1 em{font-weight:700;color:var(--accent)}
+.lede{font:normal 17px/1.75 var(--sans);color:#55574e;max-width:590px}
+.hero-copy{max-width:620px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--ink);padding:12px 17px;font-size:11px;letter-spacing:.04em;transition:all .2s}
+.button.primary{background:var(--ink);color:var(--paper)}
+.button:hover{transform:translateY(-2px)}
+.button.secondary{border-color:var(--line)}
+.hero-art{position:relative;min-height:400px;background:#ffffff;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-art:before{content:"";position:absolute;width:330px;height:330px;border:1px solid #b9b7aa;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%)}
+.hero-art:after{content:"";position:absolute;width:240px;height:360px;border:1px solid #c8c5b8;border-radius:48% 48% 4px 4px;left:50%;top:50%;transform:translate(-50%,-44%) rotate(28deg)}
+.art-inner{position:relative;z-index:1;text-align:center;max-width:230px}
+.art-mark{font:italic 90px/.95 var(--serif);color:var(--accent);letter-spacing:-.08em}
+.art-inner p{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:20px 0 0}
+.art-note{position:absolute;bottom:20px;left:22px;font:italic 13px var(--serif);color:var(--muted)}
+.section{padding:74px 0;border-bottom:1px solid var(--line)}
+.section-head{display:grid;grid-template-columns:.65fr 1.35fr;gap:50px;margin-bottom:38px}
+.section-kicker{font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--accent);padding-top:9px}
+h2{font:italic 700 clamp(34px,4vw,48px)/1.12 var(--serif);letter-spacing:-.04em;margin-bottom:16px}
+.section-intro{font:normal 16px/1.75 var(--sans);color:var(--muted);max-width:700px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px}
+.body-copy{max-width:600px;color:#55574e}
+.pullquote{font:italic 700 25px/1.45 var(--serif);letter-spacing:-.025em;border-left:2px solid var(--accent);padding:5px 0 5px 25px;align-self:start}
+.pill-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
+.pill{border:1px solid var(--line);border-radius:100px;padding:7px 12px;font-size:11px;color:var(--muted)}
+.cv-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.cv-column h3,.project-card h3{font:500 24px/1.25 var(--serif);letter-spacing:-.025em;margin-bottom:16px}
+.timeline{border-top:1px solid var(--line)}
+.timeline-item{display:grid;grid-template-columns:115px 1fr;gap:18px;padding:19px 0;border-bottom:1px solid var(--line)}
+.timeline-date{font-size:11px;color:var(--muted);padding-top:3px}
+.timeline-title{font-size:14px;font-weight:600;line-height:1.45}
+.timeline-place{font-size:12px;color:var(--muted);margin-top:3px}
+.timeline-detail{font-size:12px;color:#55574e;margin-top:8px}
+.small-note{font-size:11px;color:var(--muted);margin-top:24px}
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.project-card{padding:24px;background:var(--white);border:1px solid var(--line);min-height:255px;display:flex;flex-direction:column}
+.project-top{display:flex;justify-content:space-between;gap:12px;margin-bottom:27px}
+.project-number{font:italic 16px var(--serif);color:var(--accent)}
+.project-type{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:right}
+.project-card h3{margin-bottom:12px}
+.project-card p{font-size:13px;color:#5c5e55;margin-bottom:16px}
+.project-meta{font-size:10px;line-height:1.6;color:var(--muted);margin:-5px 0 14px;letter-spacing:.01em}
+.project-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto}
+.project-tags span{font-size:10px;background:var(--accent-light);color:#405348;padding:5px 8px}
+.publication-list{border-top:1px solid var(--line)}
+.pub-journal{font-size:12px;color:var(--muted);font-style:italic;margin-top:4px}
+.pub-item{display:grid;grid-template-columns:100px 1fr auto;gap:25px;padding:25px 0;border-bottom:1px solid var(--line);align-items:start}
+.pub-year{font-size:11px;color:var(--muted);padding-top:3px}
+.pub-title{font:500 21px/1.35 var(--serif);letter-spacing:-.02em;margin-bottom:7px}
+.pub-meta{font-size:12px;color:var(--muted)}
+.pub-link{font-size:11px;color:var(--accent);white-space:nowrap;border-bottom:1px solid #aab6ac;padding-bottom:3px}
+.pub-status{display:inline-block;margin-top:10px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--line);padding:4px 7px}
+.contact-band{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;background:var(--accent-light);padding:35px 38px;margin-top:58px}
+.contact-band h3{font:italic 700 28px var(--serif);margin-bottom:7px}
+.contact-band p{font-size:12px;color:var(--muted);margin:0}
+footer{max-width:1160px;margin:auto;padding:24px 28px;display:flex;justify-content:space-between;gap:18px;color:var(--muted);font-size:10px}
+footer a{border-bottom:1px solid var(--line)}
+@media(max-width:760px){
+ .nav-wrap{min-height:68px;padding:0 20px}.menu-toggle{display:block}
+ nav{display:none;position:absolute;left:0;right:0;top:68px;padding:18px 20px 22px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:18px}
+ nav.open{display:flex}nav a{font-size:13px}
+ main{padding:0 20px}.hero{grid-template-columns:1fr;gap:35px;padding:65px 0 60px;min-height:unset}
+ h1{font-size:54px}.hero-art{min-height:300px}.hero-art:before{width:260px;height:260px}.hero-art:after{height:290px;width:190px}
+ .section{padding:65px 0}.section-head{grid-template-columns:1fr;gap:17px;margin-bottom:32px}
+ .about-grid,.cv-grid{grid-template-columns:1fr;gap:32px}.projects{grid-template-columns:1fr}
+ .pub-item{grid-template-columns:55px 1fr;gap:14px}.pub-link{grid-column:2;justify-self:start}
+ .contact-band{grid-template-columns:1fr;padding:27px 24px}.contact-band .button{justify-self:start}
+ footer{padding:24px 20px;flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="#home" aria-label="Anis Raihan home">Anis Raihan<small>Research & scholarship</small></a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav aria-label="Main navigation" role="tablist" aria-orientation="horizontal">
+      <a href="#home" id="tab-home" role="tab" aria-controls="home" aria-selected="true" tabindex="0" class="active" data-tab="home">Home</a>
+      <a href="#about" id="tab-about" role="tab" aria-controls="about" aria-selected="false" tabindex="-1" data-tab="about">About</a>
+      <a href="#cv" id="tab-cv" role="tab" aria-controls="cv" aria-selected="false" tabindex="-1" data-tab="cv">CV</a>
+      <a href="#research" id="tab-research" role="tab" aria-controls="research" aria-selected="false" tabindex="-1" data-tab="research">Research Projects</a>
+      <a href="#publications" id="tab-publications" role="tab" aria-controls="publications" aria-selected="false" tabindex="-1" data-tab="publications">Publications</a>
+      <a href="#presentations" id="tab-presentations" role="tab" aria-controls="presentations" aria-selected="false" tabindex="-1" data-tab="presentations">Presentations</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero" id="home" role="tabpanel" aria-labelledby="tab-home" tabindex="0">
+    <div class="hero-copy">
+      <div class="eyebrow">Psychology · Human development · Digital health</div>
+      <h1>Mental health across <em>development.</em></h1>
+      <p class="lede">I am an interdisciplinary researcher with a PhD in Psychological Medicine from Universiti Putra Malaysia. My work focuses on adolescent mental health, parenting, and preventive digital interventions.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#research">Explore research <span aria-hidden="true">↗</span></a>
+        <a class="button secondary" href="#publications">Publications <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="hero-art" aria-label="Abstract line artwork">
+      <div class="art-inner"><div class="art-mark">a.r.</div><p>Evidence, context<br>and human wellbeing</p></div>
+      <div class="art-note">Research portfolio</div>
+    </div>
+  </section>
+
+  <section class="section" id="about" role="tabpanel" aria-labelledby="tab-about" tabindex="0" hidden>
+    <div class="section-head">
+      <div class="section-kicker">01 / About</div>
+      <div><h2>Families, development, and wellbeing.</h2><p class="section-intro">My work brings together developmental science, mental health, family research, prevention science, and digital health.</p></div>
+    </div>
+    <div class="about-grid">
+      <div class="body-copy">
+        <p>With academic training in cognitive science, neuroscience, and psychological medicine, I study adolescent mental health and the roles of parents and wider social and cultural environments in shaping wellbeing.</p>
+        <p>My experience spans quantitative research, scale validation, and intervention research. I am open to academic and research opportunities that advance work in mental health and human development.</p>
+      </div>
+      <div>
+        <div class="pullquote">Understanding wellbeing means looking at people in the family and social contexts where they grow.</div>
+        <div class="pill-row"><span class="pill">Adolescent mental health</span><span class="pill">Parenting &amp; family systems</span><span class="pill">Prevention science</span><span class="pill">Digital health</span><span class="pill">Human development</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cv" role="tabpanel" aria-labelledby="tab-cv" tabindex="0" hidden>
+    <div class="section-head">
+      <div class="section-kicker">02 / CV</div>
+      <div><h2>Training and experience.</h2><p class="section-intro">A snapshot of my academic background and selected research roles.</p></div>
+    </div>
+    <div class="cv-grid">
+      <div class="cv-column">
+        <h3>Education</h3>
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-date">2021–2026</div><div><div class="timeline-title">PhD, Psychological Medicine</div><div class="timeline-place">Universiti Putra Malaysia</div><div class="timeline-detail">Doctoral research on parental mental health, parenting, and early adolescent adjustment in Malay families. Degree conferred May 2026.</div></div></div>
+          <div class="timeline-item"><div class="timeline-date">2019–2021</div><div><div class="timeline-title">Master of Neuroscience</div><div class="timeline-place">Universiti Sains Malaysia</div><div class="timeline-detail">Master’s research on EEG microstate patterns and auditory recitation conditions.</div></div></div>
+          <div class="timeline-item"><div class="timeline-date">2015–2018</div><div><div class="timeline-title">BSc, Cognitive Science</div><div class="timeline-place">Universiti Malaysia Sarawak</div></div></div>
+        </div>
+      </div>
+      <div class="cv-column">
+        <h3>Selected experience</h3>
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-date">Dec 2025–Jun 2026</div><div><div class="timeline-title">Research Assistant</div><div class="timeline-place">Universiti Putra Malaysia · DAYA project</div><div class="timeline-detail">Supported intervention development, study coordination, and ethics documentation.</div></div></div>
+          <div class="timeline-item"><div class="timeline-date">Jul 2023–Apr 2024</div><div><div class="timeline-title">Project Officer</div><div class="timeline-place">International Islamic University Malaysia, Kuantan</div><div class="timeline-detail">Coordinated a Psychological First Aid programme for school counsellors.</div></div></div>
+          <div class="timeline-item"><div class="timeline-date">2021–2023</div><div><div class="timeline-title">Graduate Research Assistant</div><div class="timeline-place">Universiti Putra Malaysia</div><div class="timeline-detail">Contributed to development and evaluation of the Digital-Assisted Parenting Intervention (DaPI).</div></div></div>
+          <div class="timeline-item"><div class="timeline-date">2021–2024</div><div><div class="timeline-title">Freelance Tutor</div><div class="timeline-place">Academic teaching and student support</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:34px">
+      <div class="section-kicker">Methods &amp; tools</div>
+      <div class="pill-row"><span class="pill">Randomized controlled trials</span><span class="pill">Structural equation modelling</span><span class="pill">Scale validation</span><span class="pill">Quantitative analysis</span><span class="pill">SPSS</span><span class="pill">AMOS</span><span class="pill">Jamovi</span><span class="pill">MATLAB</span><span class="pill">R · developing</span></div>
+      <p class="small-note">DaPI intervention programme · MyIPO copyright registration CRLY2023W02011.</p>
+    </div>
+  </section>
+
+  <section class="section" id="research" role="tabpanel" aria-labelledby="tab-research" tabindex="0" hidden>
+    <div class="section-head">
+      <div class="section-kicker">03 / Research</div>
+      <div><h2>Research projects.</h2><p class="section-intro">Selected work across adolescent mental health, family processes, intervention research, and brain–behaviour science.</p></div>
+    </div>
+    <div class="projects">
+      <article class="project-card">
+        <div class="project-top"><span class="project-number">01</span><span class="project-type">Doctoral research</span></div>
+        <h3>Parenting and early adolescent adjustment</h3>
+        <div class="project-meta">PhD researcher · Universiti Putra Malaysia · 2021–2026</div>
+        <p>Examined how parental mental health, self-efficacy, and parenting behaviours relate to emotional-behavioural problems and competence among early adolescents in Malay families, using structural equation modelling.</p>
+        <div class="project-tags"><span>Family processes</span><span>SEM</span><span>Adolescent wellbeing</span></div>
+      </article>
+      <article class="project-card">
+        <div class="project-top"><span class="project-number">02</span><span class="project-type">FRGS-funded RCT</span></div>
+        <h3>DAYA: Preventive digital mental health</h3>
+        <div class="project-meta">Research Assistant · Universiti Putra Malaysia · Dec 2025–Jun 2026</div>
+        <p>Supported a web-based preventive intervention for adolescents and young adults, including CBT- and behavioural activation-based modules, study coordination, and ethics documentation.</p>
+        <div class="project-tags"><span>Digital health</span><span>Intervention development</span><span>RCT</span></div>
+      </article>
+      <article class="project-card">
+        <div class="project-top"><span class="project-number">03</span><span class="project-type">Programme evaluation</span></div>
+        <h3>Psychological First Aid for school counsellors</h3>
+        <div class="project-meta">Project Officer · IIUM, Kuantan · 2023–2024 · Yayasan Hasanah-funded</div>
+        <p>Contributed to programme coordination, evaluation, statistical analysis, and facilitation of training to strengthen school counsellors’ early psychological support skills.</p>
+        <div class="project-tags"><span>Programme evaluation</span><span>Training</span><span>Mental health</span></div>
+      </article>
+      <article class="project-card">
+        <div class="project-top"><span class="project-number">04</span><span class="project-type">FRGS-funded RCT</span></div>
+        <h3>Digital-Assisted Parenting Intervention (DaPI)</h3>
+        <div class="project-meta">Graduate Research Assistant · Universiti Putra Malaysia · 2021–2023</div>
+        <p>Contributed to the co-development and evaluation of a digital parenting intervention supporting adolescent mental health. The intervention module received MyIPO copyright registration.</p>
+        <div class="project-tags"><span>Parenting</span><span>RCT</span><span>IP registration</span></div>
+      </article>
+      <article class="project-card">
+        <div class="project-top"><span class="project-number">05</span><span class="project-type">Master’s research</span></div>
+        <h3>EEG microstates and rhythmic recitation</h3>
+        <div class="project-meta">Master of Neuroscience · Universiti Sains Malaysia · 2019–2021</div>
+        <p>Explored brain microstate patterns across Qur’anic and non-Qur’anic rhythmic recitation conditions, building experience in EEG, experimental research, and neurophysiological data analysis.</p>
+        <div class="project-tags"><span>Neuroscience</span><span>EEG</span><span>Brain–behaviour</span></div>
+      </article>
+      <article class="project-card">
+        <div class="project-top"><span class="project-number">06</span><span class="project-type">Undergraduate research</span></div>
+        <h3>Sexuality education for adolescents with intellectual disabilities</h3>
+        <div class="project-meta">Final-year research project · Universiti Malaysia Sarawak · 2018</div>
+        <p>Used semi-structured interviews to explore special education teachers’ experiences, challenges, and contextual considerations when teaching sexuality education to adolescents with intellectual disabilities.</p>
+        <div class="project-tags"><span>Qualitative research</span><span>Human development</span><span>Education</span></div>
+      </article>
+    </div>
+    <p class="small-note">DaPI intellectual property registration: MyIPO reference CRLY2023W02011.</p>
+  </section>
+
+  <section class="section" id="publications" role="tabpanel" aria-labelledby="tab-publications" tabindex="0" hidden>
+    <div class="section-head">
+      <div class="section-kicker">04 / Publications</div>
+      <div><h2>Peer-reviewed publications.</h2><p class="section-intro">Research on parenting, adolescent mental health, digital interventions, and measurement.</p></div>
+    </div>
+    <div class="publication-list">
+      <article class="pub-item"><div class="pub-year">2026</div><div><div class="pub-title">Psychometric Properties of the Malay Child Adjustment and Parent Efficacy Scale (CAPES)</div><div class="pub-journal">Pertanika Journal of Social Science &amp; Humanities</div></div><span class="pub-status">Published</span></article>
+      <article class="pub-item"><div class="pub-year">2024</div><div><div class="pub-title">A pilot RCT on the feasibility, acceptability, and initial efficacy of a digital-assisted parenting intervention for promoting parental mental health in Malaysian adolescents</div><div class="pub-journal">Digital Health</div></div><span class="pub-status">Published</span></article>
+      <article class="pub-item"><div class="pub-year">2024</div><div><div class="pub-title">Linking parental self-efficacy, parenting behaviour and mental health of Malaysian early adolescents</div><div class="pub-journal">Current Psychology</div></div><span class="pub-status">Published</span></article>
+      <article class="pub-item"><div class="pub-year">2022</div><div><div class="pub-title">Protocol for randomized controlled trial of a digital-assisted parenting intervention for promoting Malaysian children’s mental health</div><div class="pub-journal">Frontiers in Psychology</div></div><span class="pub-status">Protocol</span></article>
+      <article class="pub-item"><div class="pub-year">2019</div><div><div class="pub-title">Let’s Talk About Sex: Teaching Adolescents with Intellectual Disability about Sexuality Education</div><div class="pub-journal">Indonesian Journal of Cultural &amp; Community Development</div></div><span class="pub-status">Published</span></article>
+    </div>
+    <p class="small-note">DOI and publisher links can be added once verified.</p>
+  </section>
+
+  <section class="section" id="presentations" role="tabpanel" aria-labelledby="tab-presentations" tabindex="0" hidden>
+    <div class="section-head">
+      <div class="section-kicker">05 / Presentations</div>
+      <div><h2>Conference presentations.</h2><p class="section-intro">Selected presentations on parenting, adolescent mental health, and human development.</p></div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-date">May 2026</div><div><div class="timeline-title">Parents’ Mental Health, Self-Efficacy, and Parenting Behaviours in Relation to Adolescent Emotional-Behavioural Problems and Competence in Malaysia</div><div class="timeline-place">1st UPM Postgraduate Symposium 2026</div></div></div>
+      <div class="timeline-item"><div class="timeline-date">Oct 2024</div><div><div class="timeline-title">Parent, Child, and Sociocultural Influences on Malaysian Parenting Behaviours</div><div class="timeline-place">4th Southeast Asia Psychology Conference · Kota Kinabalu, Sabah</div></div></div>
+      <div class="timeline-item"><div class="timeline-date">Jun 2024</div><div><div class="timeline-title">Malay Parenting Behaviours and Adolescent Emotional and Behavioural Adjustment: Does It Differ Between Sons and Daughters?</div><div class="timeline-place">Research Student Enrichment Program (RSEP) 2024 · Surabaya, Indonesia</div></div></div>
+      <div class="timeline-item"><div class="timeline-date">Aug 2023</div><div><div class="timeline-title">Parental Mental Health and Self-Efficacy as Predictors of Emotional and Behavioural Problems in Malaysian Early Adolescents</div><div class="timeline-place">15th International Conference on Child and Adolescent Psychopathology · Kuching, Sarawak</div></div></div>
+      <div class="timeline-item"><div class="timeline-date">Nov 2018</div><div><div class="timeline-title">Let’s Talk About Sex: Teaching Adolescents with Intellectual Disability about Sexuality Education</div><div class="timeline-place">International Conference and Innovation Exhibition on Global Education · Sintok, Kedah</div></div></div>
+    </div>
+  </section>
+
+</main>
+<footer><span>© <span id="year"></span> Anis Raihan Dzeidee Schaff</span><span>Academic portfolio · Research & scholarship</span></footer>
+<script>
+const toggle=document.querySelector('.menu-toggle');
+const nav=document.querySelector('nav');
+const tabs=[...nav.querySelectorAll('[role="tab"]')];
+const panels=[...document.querySelectorAll('main [role="tabpanel"]')];
+function closeMobileNav(){nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation');toggle.textContent='☰';}
+function showTab(id, updateAddress=true){
+  const panel=document.getElementById(id);
+  const tab=tabs.find(item=>item.dataset.tab===id);
+  if(!panel || !tab) return;
+  panels.forEach(item=>{item.hidden=item.id!==id;});
+  tabs.forEach(item=>{const active=item===tab;item.classList.toggle('active',active);item.setAttribute('aria-selected',String(active));item.tabIndex=active?0:-1;});
+  closeMobileNav();
+  if(updateAddress && location.hash!=='#'+id) history.pushState({tab:id},'', '#'+id);
+  window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+}
+toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');toggle.textContent=open?'×':'☰';});
+tabs.forEach((tab,index)=>{
+  tab.addEventListener('click',event=>{event.preventDefault();showTab(tab.dataset.tab);});
+  tab.addEventListener('keydown',event=>{
+    let next=index;
+    if(event.key==='ArrowRight') next=(index+1)%tabs.length;
+    else if(event.key==='ArrowLeft') next=(index-1+tabs.length)%tabs.length;
+    else if(event.key==='Home') next=0;
+    else if(event.key==='End') next=tabs.length-1;
+    else return;
+    event.preventDefault();tabs[next].focus();showTab(tabs[next].dataset.tab);
+  });
+});
+// Links elsewhere on the page (logo, research buttons, and back-to-top) switch panels too.
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+  if(link.closest('nav')) return;
+  link.addEventListener('click',event=>{
+    const id=link.getAttribute('href').slice(1);
+    if(tabs.some(tab=>tab.dataset.tab===id)){event.preventDefault();showTab(id);}
+  });
+});
+window.addEventListener('popstate',()=>{const id=location.hash.slice(1)||'home';showTab(tabs.some(tab=>tab.dataset.tab===id)?id:'home',false);});
+const initialId=location.hash.slice(1);
+showTab(tabs.some(tab=>tab.dataset.tab===initialId)?initialId:'home',false);
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
