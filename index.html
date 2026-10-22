@@ -428,6 +428,11 @@ nav a{font-size:10.5px}
   nav a{font-size:12px}
 }
 
+
+/* Home research tags: consistent spacing and compact wrapping. */
+.home-research-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.home-research-tags .pill{font-size:12px;line-height:1.4;padding:7px 11px}
+
 </style>
 </head>
 <body>
@@ -436,8 +441,7 @@ nav a{font-size:10.5px}
     <a class="brand" href="#home" aria-label="Anis Raihan home">Anis Raihan Dzeidee Schaff, PhD<small>Research · Development · Wellbeing</small></a>
     <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
     <nav aria-label="Main navigation" role="tablist" aria-orientation="horizontal">
-      <a href="#home" id="tab-home" role="tab" aria-controls="home" aria-selected="true" tabindex="0" class="active" data-tab="home">Overview</a>
-      <a href="#about" id="tab-about" role="tab" aria-controls="about" aria-selected="false" tabindex="-1" data-tab="about">About Me</a>
+      <a href="#home" id="tab-home" role="tab" aria-controls="home" aria-selected="true" tabindex="0" class="active" data-tab="home">Home</a>
       <a href="#cv" id="tab-cv" role="tab" aria-controls="cv" aria-selected="false" tabindex="-1" data-tab="cv">CV</a>
       <a href="#research" id="tab-research" role="tab" aria-controls="research" aria-selected="false" tabindex="-1" data-tab="research">Research</a>
       <a href="#publications" id="tab-publications" role="tab" aria-controls="publications" aria-selected="false" tabindex="-1" data-tab="publications">Publications</a>
@@ -489,12 +493,13 @@ nav a{font-size:10.5px}
     <div class="stat"><strong>05</strong><span>Presentations</span></div>
   </section>
 
-  </section>
-
-  <section class="section" id="about" role="tabpanel" aria-labelledby="tab-about" tabindex="0" hidden>
+  <section class="overview-section overview-about" aria-labelledby="home-about-heading">
     <div class="section-head">
-      <div class="section-kicker">01 / About me</div>
-      <div><h2>Families, development, and wellbeing.</h2><p class="section-intro">My work brings together developmental science, mental health, family research, prevention science, and digital health.</p></div>
+      <div class="section-kicker">A little about my work</div>
+      <div>
+        <h2 id="home-about-heading">Mental health, in context.</h2>
+        <p class="section-intro">My work brings together developmental science, mental health, family research, prevention science, and digital health.</p>
+      </div>
     </div>
     <div class="about-grid">
       <div class="body-copy">
@@ -502,15 +507,19 @@ nav a{font-size:10.5px}
         <p>My experience spans quantitative research, scale validation, and intervention research. I am open to academic and research opportunities that advance work in mental health and human development.</p>
       </div>
       <div>
-        <div class="pullquote">Understanding wellbeing means looking at people in the family and social contexts where they grow.</div>
-        <div class="pill-row"><span class="pill">Adolescent mental health</span><span class="pill">Parenting &amp; family systems</span><span class="pill">Prevention science</span><span class="pill">Digital health</span><span class="pill">Human development</span></div>
+        <div class="pullquote">Understanding wellbeing means considering the family and social contexts in which people grow.</div>
+        <div class="pill-row home-research-tags"><span class="pill">Adolescent mental health</span><span class="pill">Parenting &amp; family relationships</span><span class="pill">Human development</span><span class="pill">Mental health prevention</span><span class="pill">Digital mental health</span></div>
       </div>
     </div>
   </section>
 
+  </section>
+
+  
+
   <section class="section" id="cv" role="tabpanel" aria-labelledby="tab-cv" tabindex="0" hidden>
     <div class="section-head">
-      <div class="section-kicker">02 / CV</div>
+      <div class="section-kicker">01 / CV</div>
       <div><h2>Training and experience.</h2><p class="section-intro">A snapshot of my academic background and selected research roles.</p></div>
     </div>
     <div class="cv-grid">
@@ -563,7 +572,7 @@ nav a{font-size:10.5px}
 
   <section class="section" id="research" role="tabpanel" aria-labelledby="tab-research" tabindex="0" hidden>
     <div class="section-head">
-      <div class="section-kicker">03 / Research</div>
+      <div class="section-kicker">02 / Research</div>
       <div><h2>Research Projects.</h2><p class="section-intro">Research projects I’ve contributed to in collaboration with principal investigators across parenting, adolescent and young adult mental health, intervention research, brain–behaviour science, and sexuality education.</p></div>
     </div>
     <div class="projects">
@@ -614,7 +623,7 @@ nav a{font-size:10.5px}
 
   <section class="section" id="publications" role="tabpanel" aria-labelledby="tab-publications" tabindex="0" hidden>
     <div class="section-head">
-      <div class="section-kicker">04 / Publication library</div>
+      <div class="section-kicker">03 / Publication library</div>
       <div><h2>Publications.</h2><p class="section-intro">Articles and research protocols on parenting, adolescent mental health, digital interventions, and measurement.</p></div>
     </div>
     <div class="library-controls">
@@ -677,7 +686,7 @@ nav a{font-size:10.5px}
 
   <section class="section" id="presentations" role="tabpanel" aria-labelledby="tab-presentations" tabindex="0" hidden>
     <div class="section-head">
-      <div class="section-kicker">05 / Presentations</div>
+      <div class="section-kicker">04 / Presentations</div>
       <div><h2>Conference Presentations.</h2><p class="section-intro">Selected presentations on parenting, adolescent mental health, and human development.</p></div>
     </div>
     <div class="timeline">
@@ -691,7 +700,7 @@ nav a{font-size:10.5px}
 
   <section class="section" id="blog" role="tabpanel" aria-labelledby="tab-blog" tabindex="0" hidden>
     <div class="section-head">
-      <div class="section-kicker">06 / Blog</div>
+      <div class="section-kicker">05 / Blog</div>
       <div><h2>Notes on research, development, and mental health.</h2><p class="section-intro">Occasional reflections on research, academic life, family wellbeing, and the questions that connect brain, behaviour, and mental health.</p></div>
     </div>
     <div class="blog-list" id="blog-list">
