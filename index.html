@@ -645,6 +645,67 @@ h1 em, h2 em, h3 em, h4 em, h5 em, h6 em,
 @media(max-width:900px){.research-focus-layout{grid-template-columns:1fr;gap:28px}.research-focus-details{border-left:0;border-top:1px solid var(--line);padding:25px 0 0}.featured-projects-heading{grid-template-columns:1fr 1fr}.featured-projects-link{grid-column:1/-1;justify-self:start}.featured-project-cards{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.research-focus-home{padding:48px 0}.research-dimensions{grid-template-columns:1fr;gap:18px}.home-featured-projects{padding:34px 20px 24px;margin:0 -20px}.featured-projects-heading{grid-template-columns:1fr;gap:12px}.featured-projects-heading>p{max-width:none}.featured-projects-link{grid-column:auto}.featured-project-cards{grid-template-columns:1fr}.featured-project-card{padding:20px}.featured-project-top{font-size:8px}}
 
+
+
+/* Final homepage refinements: upright project heading and tighter vertical rhythm. */
+.featured-projects-heading h2{
+  font-style:normal;
+}
+#home > .overview-section{
+  padding-top:46px;
+  padding-bottom:46px;
+}
+#home > .overview-stats{
+  padding-top:13px;
+  padding-bottom:16px;
+}
+#home > .overview-section .section-head{
+  margin-bottom:22px;
+}
+#home .pub-item{
+  padding-top:18px;
+  padding-bottom:18px;
+}
+#home .home-featured-projects{
+  padding-top:30px;
+  padding-bottom:24px;
+}
+#home .featured-projects-heading{
+  margin-bottom:18px;
+  gap:20px;
+}
+#home .featured-project-card{
+  padding:18px 18px 16px;
+}
+#home .featured-project-top{
+  margin-bottom:13px;
+}
+#home .featured-project-card h3{
+  margin-bottom:7px;
+}
+#home .featured-project-meta{
+  margin-bottom:10px;
+}
+#home .featured-project-card>p{
+  margin-bottom:12px;
+}
+@media(max-width:760px){
+  #home > .overview-section{
+    padding-top:34px;
+    padding-bottom:34px;
+  }
+  #home .home-featured-projects{
+    padding-top:26px;
+    padding-bottom:20px;
+  }
+  #home .featured-projects-heading{
+    margin-bottom:15px;
+  }
+  #home .featured-project-card{
+    padding:17px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -761,7 +822,7 @@ h1 em, h2 em, h3 em, h4 em, h5 em, h6 em,
         <h3>DaPI: Digital-Assisted Parenting Intervention for Promoting Children's Mental Health</h3>
         <div class="featured-project-meta">Universiti Putra Malaysia <span>·</span> Graduate Research Assistant</div>
         <p>Co-developed and implemented a digital-assisted parenting intervention to promote children's mental health, including coordination of randomized controlled trial activities.</p>
-        <div class="featured-project-tags"><span>Parenting</span><span>Child mental health</span><span>Digital mental health</span><span>RCT</span></div>
+        <div class="featured-project-tags"><span>Parenting intervention</span><span>Child mental health</span><span>Digital mental health</span><span>RCT</span></div>
       </article>
     </div>
   </section>
