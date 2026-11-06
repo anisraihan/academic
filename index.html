@@ -165,7 +165,7 @@ h1, h2, h3, h4, .serif, .serif-heading {
   padding: 28px 30px !important;
 }
 .research-card p {
-  font-size: 15px !important;
+  font-size: 17px !important;
   line-height: 1.45 !important;
   margin-top: 14px !important;
 }
@@ -482,6 +482,144 @@ button:hover, .button:hover, .btn:hover {
   .picture img { min-height: 280px; }
 }
 
+
+/* CV download placement */
+.cv-download-wrap { margin: 18px 0 30px; }
+.cv-download { display:inline-flex; align-items:center; gap:12px; margin-top:0; }
+
+/* Research Focus: increase sans-serif card descriptions by 2px */
+.research-card p { font-family: Inter, Arial, sans-serif !important; font-size:17px !important; }
+
+/* Publications and conference presentations share a unified typographic system */
+#publications .publication-subsection { margin-top:34px; }
+#publications .publication-subheading {
+  margin:0 0 16px;
+  font-family:"Noto Serif",Georgia,serif !important;
+  font-size:clamp(26px,3.5vw,37px) !important;
+  font-weight:400 !important;
+  line-height:1.25 !important;
+  letter-spacing:-.035em !important;
+}
+#publications .presentation-entry {
+  margin:18px 0;
+  padding:22px 24px;
+  border:1px solid #E3E7EC;
+  border-left:3px solid #7895AA;
+  background:#FFFFFF;
+}
+#publications .presentation-date,
+#publications .presentation-title {
+  font-family:"Noto Serif",Georgia,serif !important;
+  font-weight:700 !important;
+  font-size:17px !important;
+  line-height:1.4 !important;
+}
+#publications .presentation-date { margin:0 0 8px; }
+#publications .presentation-location,
+#publications .presentation-conference {
+  font-family:Inter,Arial,sans-serif !important;
+  font-size:17px !important;
+  line-height:1.4 !important;
+  color:#667085 !important;
+  margin:0 0 7px;
+}
+#publications .presentation-title { margin:12px 0 0; }
+
+/* Blog post blocks */
+#blog .blog-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+#blog .blog-card {
+  display:flex; flex-direction:column; align-items:flex-start;
+  min-height:230px; padding:24px;
+  border:1px solid #E3E7EC; border-left:3px solid #7895AA;
+  background:#FFFFFF; box-shadow:0 2px 8px rgba(31,42,68,.035);
+}
+#blog .blog-date {
+  margin:0 0 12px; color:#667085 !important;
+  font-family:Inter,Arial,sans-serif !important; font-size:13px !important;
+}
+#blog .blog-card h3 {
+  margin:0 0 12px; font-size:20px !important;
+  font-family:"Noto Serif",Georgia,serif !important; font-weight:700 !important;
+}
+#blog .blog-card h3 a { color:#1F2A44 !important; }
+#blog .blog-card > p:not(.blog-date) {
+  font-family:Inter,Arial,sans-serif !important; font-size:17px !important;
+  color:#667085 !important; line-height:1.5;
+}
+#blog .blog-read-more, #blog .blog-source a {
+  color:#1F2A44 !important; font-size:14px !important; font-weight:700;
+}
+#blog .blog-read-more { margin-top:auto; padding-top:12px; }
+#blog .blog-source { margin-top:24px; }
+#blog .blog-card a:hover, #blog .blog-source a:hover { color:#7895AA !important; }
+
+ /* Footer font sizes increased by 2px from the previous requested version */
+footer a, .footer a, .social-links a, .footer-links a { font-size:15px !important; }
+footer small { font-size:12px !important; }
+.footer-links { justify-content:center !important; width:100%; }
+footer { justify-content:center !important; }
+footer small { width:100%; text-align:center; }
+
+@media(max-width:800px) {
+  #blog .blog-grid { grid-template-columns:1fr; }
+}
+
+
+/* Pill-shaped, high-contrast action buttons */
+.cv-download,
+.home-action {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:12px 22px;
+  border:1px solid #1F2A44;
+  border-radius:999px;
+  background:#1F2A44;
+  color:#FFFFFF !important;
+  font-family:Inter,Arial,sans-serif;
+  font-size:15px !important;
+  font-weight:700;
+  line-height:1.2;
+  text-decoration:none;
+  transition:background-color .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;
+}
+.cv-download:hover,
+.home-action-primary:hover {
+  background:#7895AA !important;
+  border-color:#7895AA !important;
+  color:#FFFFFF !important;
+  transform:translateY(-1px);
+}
+.home-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:24px 0 22px;
+}
+.home-action-secondary {
+  background:#FFFFFF;
+  color:#1F2A44 !important;
+  border-color:#7895AA;
+}
+.home-action-secondary:hover {
+  background:#F5F6F8 !important;
+  border-color:#1F2A44 !important;
+  color:#1F2A44 !important;
+  transform:translateY(-1px);
+}
+.cv-download:focus-visible,
+.home-action:focus-visible {
+  outline:3px solid #9CB9C9;
+  outline-offset:3px;
+}
+/* Copyright text increased by 2px */
+footer small { font-size:14px !important; }
+@media(max-width:520px) {
+  .home-actions { gap:10px; }
+  .home-action { padding:11px 18px; }
+}
+
 </style>
 </head>
 <body>
@@ -489,7 +627,7 @@ button:hover, .button:hover, .btn:hover {
  <div class="nav">
   <a class="brand" href="#home">Anis Raihan Dzeidee Schaff, PhD</a>
   <nav aria-label="Main navigation">
-   <a href="#home">Home</a><a href="#cv">CV</a><a href="#research">Research</a><a href="#publications">Publication</a><a href="#presentations">Presentations</a><a href="#science-communication">SciComm</a><a href="#outreach">Outreach</a>
+   <a href="#home">Home</a><a href="#cv">CV</a><a href="#research">Research</a><a href="#publications">Publication</a><a href="#science-communication">SciComm</a><a href="#outreach">Outreach</a><a href="#blog">Blog</a>
   </nav>
  </div>
 </header>
@@ -504,6 +642,10 @@ button:hover, .button:hover, .btn:hover {
     <p class="lead">I am a psychology researcher with a focus on psychological medicine and child and adolescent health. My work examines how family processes, parenting, and evidence-based digital tools shape mental health and wellbeing.</p>
     <p>I am particularly interested in understanding mental health across childhood, adolescence, and young adulthood through a <strong>biopsychosocial-spiritual perspective</strong>—recognising how biological, psychological, social, and spiritual dimensions intersect in shaping human development and wellbeing.</p>
     <p>Through research and public communication, I aim to make psychological science meaningful beyond the journal, connecting evidence with the lives, relationships, and communities it seeks to understand.</p>
+    <div class="home-actions" aria-label="Homepage links">
+     <a class="home-action home-action-primary" href="#research">Explore Research</a>
+     <a class="home-action home-action-secondary" href="mailto:raihandzeidee@gmail.com">Contact Me</a>
+    </div>
     <p class="hero-note">Based in Malaysia · Open to research, postdoctoral, and lecturer opportunities</p>
    </div>
    <div class="picture">
@@ -533,6 +675,7 @@ button:hover, .button:hover, .btn:hover {
 
  <section id="cv">
   <p class="eyebrow">Curriculum Vitae</p><h2>Academic &amp; professional background</h2>
+  <p class="cv-download-wrap"><a class="cv-download" href="AnisRaihan_CV.pdf" download="AnisRaihan_CV.pdf">Download CV <span aria-hidden="true">↓</span></a></p>
   <p class="section-intro">Training and experience across psychological medicine, neuroscience, research implementation, and public engagement.</p>
   <h3>Academic Education</h3>
   <div class="entry"><div class="entry-meta">2021–2026<br>CGPA 3.83</div><div><div class="entry-title">PhD in Psychological Medicine</div><div class="entry-detail"><strong>Universiti Putra Malaysia (UPM)</strong><br>Thesis: Structural Relations Between Parental Mental Health, Self-Efficacy, Parenting Behaviour, and Early Adolescent Mental Health Among Malay Families in Malaysia.</div></div></div>
@@ -643,23 +786,11 @@ button:hover, .button:hover, .btn:hover {
   <div class="publication"><h3>A pilot randomized control trial on the feasibility, acceptability, and initial effects of a digital-assisted parenting intervention for promoting mental health in Malaysian adolescents</h3><p class="citation">Zulkefly, N. S., Dzeidee Schaff, A. R., Zaini, N. A., Mukhtar, F., &amp; Dahlan, R. (2024). <em>Digital Health.</em> DOI: 10.1177/20552076241249572</p><a class="pub-link" href="https://doi.org/10.1177/20552076241249572" target="_blank" rel="noopener">View publication ↗</a></div>
   <div class="publication"><h3>Psychometric properties of the Malay Child Adjustment and Parent Efficacy Scale (CAPES)</h3><p class="citation">Dzeidee Schaff, A. R., &amp; Zulkefly, N. S. (2024). <em>Pertanika Journal of Social Sciences &amp; Humanities.</em> DOI: 10.47836/pjssh.34.2.11</p><a class="pub-link" href="https://doi.org/10.47836/pjssh.34.2.11" target="_blank" rel="noopener">View publication ↗</a></div>
   <div class="publication"><h3>Protocol for randomized control trial of a digital-assisted parenting intervention for promoting Malaysian children's mental health</h3><p class="citation">Zulkefly, N. S., Schaff, A. R. D., Zaini, N. A., Mukhtar, F., Norowi, N. M., Dahlan, R., &amp; Said, S. M. (2022). <em>Frontiers in Psychology.</em> DOI: 10.3389/fpsyg.2022.928895</p><a class="pub-link" href="https://doi.org/10.3389/fpsyg.2022.928895" target="_blank" rel="noopener">View publication ↗</a></div>
- </section>
-
- <section id="science-communication">
-  <p class="eyebrow">Science Communication Hub</p><h2>Psychology, beyond the journal</h2>
-  <p class="section-intro">Research explainers and practical perspectives designed to make psychological science more accessible.</p>
-  <div class="comm-grid">
-   <article class="comm-card"><div class="kind">Research explainer · 5 min read</div><h3>Understanding Parent Efficacy: How Confidence Shapes Youth Mental Well-being</h3><p>Why believing in your ability as a parent can shape parent–child interactions and youth resilience.</p></article>
-   <article class="comm-card"><div class="kind">Practical guide · 7 min read</div><h3>Psychological First Aid in Schools: Supporting Students in Crisis</h3><p>A practical breakdown of Look, Listen, and Link principles for educators responding to emotional distress.</p></article>
-   <article class="comm-card"><div class="kind">E-health insight · 6 min read</div><h3>Digital Interventions for Modern Families: What the Evidence Shows</h3><p>How web-based mental health modules can make evidence-based CBT and parenting techniques accessible.</p></article>
-  </div>
- </section>
-
- <section id="presentations">
-  <p class="eyebrow">Conference presentations</p>
-  <h2>Presentations</h2>
-  <p class="section-intro">Research shared through academic conferences and symposia.</p>
-  <div class="project presentation-entry">
+ 
+  <div class="publication-subsection">
+   <h3 class="publication-subheading">Conference Presentations</h3>
+   <div class="presentation-list">
+<div class="project presentation-entry">
    <h3 class="presentation-date">May 2026 <span>|</span> Oral Presentation</h3>
    <p class="presentation-location">Universiti Putra Malaysia</p>
    <p class="presentation-conference">1st UPM Postgraduate Symposium</p>
@@ -683,7 +814,21 @@ button:hover, .button:hover, .btn:hover {
    <p class="presentation-conference">15th International Conference on Child and Adolescent Psychopathology</p>
    <h3 class="presentation-title">Parental mental health and self-efficacy as predictors of emotional and behavioural problems in Malaysian early adolescents.</h3>
   </div>
+   </div>
+  </div>
+
  </section>
+
+ <section id="science-communication">
+  <p class="eyebrow">Science Communication Hub</p><h2>Psychology, beyond the journal</h2>
+  <p class="section-intro">Research explainers and practical perspectives designed to make psychological science more accessible.</p>
+  <div class="comm-grid">
+   <article class="comm-card"><div class="kind">Research explainer · 5 min read</div><h3>Understanding Parent Efficacy: How Confidence Shapes Youth Mental Well-being</h3><p>Why believing in your ability as a parent can shape parent–child interactions and youth resilience.</p></article>
+   <article class="comm-card"><div class="kind">Practical guide · 7 min read</div><h3>Psychological First Aid in Schools: Supporting Students in Crisis</h3><p>A practical breakdown of Look, Listen, and Link principles for educators responding to emotional distress.</p></article>
+   <article class="comm-card"><div class="kind">E-health insight · 6 min read</div><h3>Digital Interventions for Modern Families: What the Evidence Shows</h3><p>How web-based mental health modules can make evidence-based CBT and parenting techniques accessible.</p></article>
+  </div>
+ </section>
+
  <section id="outreach">
   <p class="eyebrow">Community Activities</p>
   <h2>Outreach &amp; Public Engagement</h2>
@@ -725,6 +870,22 @@ button:hover, .button:hover, .btn:hover {
    <p>Volunteer, Hospital Sentosa community outreach; facilitator, Sains Kognitif Camp; committee member, Pahang’s World Scarf Day and Youth Inspirational Carnival.</p>
   </div>
  </section>
+
+
+  <section id="blog">
+   <p class="eyebrow">Writings &amp; Reflections</p>
+   <h2>Blog</h2>
+   <p class="section-intro">Notes, reflections, and ideas on psychology, neuroscience, mental health, and the experiences that shape us.</p>
+   <div id="blog-posts" class="blog-grid" aria-live="polite">
+    <article class="blog-card">
+     <p class="blog-date">22 October 2026</p>
+     <h3><a href="https://theanisraihan.blogspot.com/2026/10/foreword.html" target="_blank" rel="noopener">Foreword</a></h3>
+     <p>A space for collecting thoughts, exploring ideas, and reflecting on psychology, neuroscience, mental health, and the contexts in which people grow.</p>
+     <a class="blog-read-more" href="https://theanisraihan.blogspot.com/2026/10/foreword.html" target="_blank" rel="noopener">Read on the blog →</a>
+    </article>
+   </div>
+   <p class="blog-source"><a href="https://theanisraihan.blogspot.com/" target="_blank" rel="noopener">Visit Writings &amp; Reflections →</a></p>
+  </section>
 
 </main>
 <footer>
@@ -770,6 +931,66 @@ button:hover, .button:hover, .btn:hover {
   });
   window.addEventListener('popstate', () => showSection(location.hash.slice(1) || 'home', false));
   showSection(location.hash.slice(1) || 'home', false);
+})();
+</script>
+
+
+<script>
+(function () {
+  const container = document.getElementById('blog-posts');
+  if (!container) return;
+  const feedUrl = 'https://theanisraihan.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=12&callback=renderRaihanBloggerFeed';
+  window.renderRaihanBloggerFeed = function (data) {
+    const entries = (data && data.feed && data.feed.entry) || [];
+    if (!entries.length) return;
+    const safeText = (htmlText) => {
+      const doc = new DOMParser().parseFromString(htmlText || '', 'text/html');
+      return (doc.body.textContent || '').replace(/\s+/g, ' ').trim();
+    };
+    const getLink = (entry) => {
+      const link = (entry.link || []).find(item => item.rel === 'alternate');
+      return link ? link.href : 'https://theanisraihan.blogspot.com/';
+    };
+    const formatDate = (value) => {
+      const date = new Date(value);
+      return Number.isNaN(date.getTime()) ? '' : date.toLocaleDateString(undefined, {day:'numeric',month:'long',year:'numeric'});
+    };
+    container.innerHTML = '';
+    entries.forEach(entry => {
+      const url = getLink(entry);
+      const title = safeText(entry.title && entry.title.$t) || 'Untitled post';
+      const excerpt = safeText(entry.summary && entry.summary.$t || entry.content && entry.content.$t).slice(0, 220);
+      const date = formatDate(entry.published && entry.published.$t);
+      const card = document.createElement('article');
+      card.className = 'blog-card';
+      const dateEl = document.createElement('p');
+      dateEl.className = 'blog-date';
+      dateEl.textContent = date;
+      const heading = document.createElement('h3');
+      const titleLink = document.createElement('a');
+      titleLink.href = url;
+      titleLink.target = '_blank';
+      titleLink.rel = 'noopener';
+      titleLink.textContent = title;
+      heading.appendChild(titleLink);
+      const excerptEl = document.createElement('p');
+      excerptEl.textContent = excerpt + (excerpt.length >= 220 ? '…' : '');
+      const readMore = document.createElement('a');
+      readMore.className = 'blog-read-more';
+      readMore.href = url;
+      readMore.target = '_blank';
+      readMore.rel = 'noopener';
+      readMore.textContent = 'Read on the blog →';
+      card.append(dateEl, heading, excerptEl, readMore);
+      container.appendChild(card);
+    });
+  };
+  const script = document.createElement('script');
+  script.src = feedUrl;
+  script.onerror = function () {
+    // Keep the latest known post card in place if Blogger's feed is unavailable.
+  };
+  document.head.appendChild(script);
 })();
 </script>
 
