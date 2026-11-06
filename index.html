@@ -935,6 +935,341 @@ footer small { font-size:14px !important; }
 </script>
 
 
+
+<script>
+/*
+ * Academic website database integration
+ * Reads published records from the Google Sheets Apps Script API.
+ * If the API is unavailable, the existing HTML content remains visible.
+ */
+(function () {
+  "use strict";
+
+  const API_URL = "https://script.google.com/macros/s/AKfycbyKGxZIEtaYnUT_tTjV0nBEBEJKrXfsbkfaHip2lnPxgNgnXGRyRd1ND-yfLt3NSAOfgA/exec";
+  const CALLBACK_NAME = "receiveAcademicDatabase";
+  const REQUIRED_SHEETS = ["cv", "research", "publications", "scicomm", "outreach"];
+
+  const make = (tag, className, text) => {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined && text !== null && text !== "") {
+      node.textContent = String(text);
+    }
+    return node;
+  };
+
+  const safeHttpsUrl = (value) => {
+    if (!value) return "";
+    try {
+      const url = new URL(String(value).trim());
+      return url.protocol === "https:" ? url.href : "";
+    } catch (_) {
+      return "";
+    }
+  };
+
+  const publishedRecords = (records) => (Array.isArray(records) ? records : [])
+    .filter(record => String(record.published).trim().toLowerCase() === "true")
+    .sort((a, b) => (Number(a.display_order) || 0) - (Number(b.display_order) || 0));
+
+  const appendLine = (parent, text) => {
+    if (!text) return;
+    parent.appendChild(document.createElement("br"));
+    parent.appendChild(document.createTextNode(String(text)));
+  };
+
+  function renderCV(records) {
+    const section = document.getElementById("cv");
+    const intro = section.querySelector(".section-intro");
+    if (!intro) throw new Error("CV introduction container not found.");
+
+    const content = make("div", "cv-database-content");
+    let sibling = intro.nextElementSibling;
+    while (sibling) {
+      const next = sibling.nextElementSibling;
+      sibling.remove();
+      sibling = next;
+    }
+    intro.insertAdjacentElement("afterend", content);
+
+    const groups = new Map();
+    records.forEach(record => {
+      const category = record.category || "Other";
+      if (!groups.has(category)) groups.set(category, []);
+      groups.get(category).push(record);
+    });
+
+    let groupIndex = 0;
+    groups.forEach((items, category) => {
+      const heading = make("h3", "", category);
+      heading.style.marginTop = groupIndex === 0 ? "28px" : "46px";
+      content.appendChild(heading);
+      groupIndex += 1;
+
+      if (category === "Methods & Tools") {
+        ["Method", "Software"].forEach(type => {
+          const subset = items.filter(item => item.item_type === type);
+          if (!subset.length) return;
+          content.appendChild(make("div", "entry-detail", type === "Method" ? "Methods" : "Software"));
+          const tags = make("div", "tags teaching-tags");
+          subset.forEach(item => tags.appendChild(make("span", "tag", item.title)));
+          content.appendChild(tags);
+        });
+        return;
+      }
+
+      if (category === "Teaching Areas") {
+        const tags = make("div", "tags teaching-tags");
+        items.forEach(item => tags.appendChild(make("span", "tag", item.title)));
+        content.appendChild(tags);
+        return;
+      }
+
+      items.forEach(item => {
+        const entry = make("div", "entry");
+        const meta = make("div", "entry-meta");
+        if (item.period) meta.textContent = item.period;
+        if (item.value) appendLine(meta, item.value);
+        const detail = make("div");
+        detail.appendChild(make("div", "entry-title", item.title));
+
+        if (item.institution || item.description) {
+          const description = make("div", "entry-detail");
+          if (item.institution) {
+            description.appendChild(make("strong", "", item.institution));
+          }
+          if (item.description) appendLine(description, item.description);
+          detail.appendChild(description);
+        }
+
+        entry.append(meta, detail);
+        content.appendChild(entry);
+      });
+    });
+  }
+
+  function renderResearch(records) {
+    const section = document.getElementById("research");
+    const heading = section.querySelector("h2");
+    if (!heading) throw new Error("Research heading not found.");
+    const container = make("div", "research-database-content");
+
+    records.forEach((item, index) => {
+      const card = make("article", "project");
+      const head = make("div", "project-head");
+      const title = make("h3");
+      title.appendChild(make("span", "project-number", String(index + 1).padStart(2, "0")));
+      title.appendChild(document.createTextNode(" " + (item.title || "")));
+      head.append(title, make("span", "project-status", item.status));
+      card.appendChild(head);
+
+      const meta = make("p", "project-meta");
+      const firstLine = [item.project_type, item.funding].filter(Boolean).join(" · ");
+      const secondLine = [item.role, item.institution, item.period].filter(Boolean).join(" · ");
+      if (firstLine) meta.textContent = firstLine;
+      if (secondLine) appendLine(meta, secondLine);
+      if (meta.textContent) card.appendChild(meta);
+
+      if (item.academic_focus) {
+        card.appendChild(make("h4", "", "Academic & Methodological Focus"));
+        card.appendChild(make("p", "", item.academic_focus));
+      }
+      if (item.public_takeaway) {
+        card.appendChild(make("h4", "", "Public Takeaway & Societal Relevance"));
+        card.appendChild(make("p", "", item.public_takeaway));
+      }
+
+      const tags = String(item.tags || "").split(";").map(tag => tag.trim()).filter(Boolean);
+      if (tags.length) {
+        const tagWrap = make("div", "tags");
+        tags.forEach(tag => tagWrap.appendChild(make("span", "tag", "#" + tag)));
+        card.appendChild(tagWrap);
+      }
+      container.appendChild(card);
+    });
+
+    let sibling = heading.nextElementSibling;
+    while (sibling) {
+      const next = sibling.nextElementSibling;
+      sibling.remove();
+      sibling = next;
+    }
+    heading.insertAdjacentElement("afterend", container);
+  }
+
+  function renderPublications(records) {
+    const section = document.getElementById("publications");
+    const heading = section.querySelector("h2");
+    if (!heading) throw new Error("Publications heading not found.");
+
+    const journalWrap = make("div", "publication-list");
+    const presentationWrap = make("div", "publication-subsection");
+    presentationWrap.appendChild(make("h3", "publication-subheading", "Conference Presentations"));
+    const presentationList = make("div", "presentation-list");
+    presentationWrap.appendChild(presentationList);
+
+    records.forEach(item => {
+      if (String(item.record_type).toLowerCase() === "conference presentation") {
+        const card = make("article", "project presentation-entry");
+        const date = make("h3", "presentation-date");
+        date.appendChild(document.createTextNode(item.year || ""));
+        if (item.presentation_type) {
+          date.appendChild(document.createTextNode(" | " + item.presentation_type));
+        }
+        card.appendChild(date);
+        if (item.location) card.appendChild(make("p", "presentation-location", item.location));
+        if (item.source_title) card.appendChild(make("p", "presentation-conference", item.source_title));
+        card.appendChild(make("h3", "presentation-title", item.title));
+        presentationList.appendChild(card);
+      } else {
+        const card = make("article", "publication");
+        card.appendChild(make("h3", "", item.title));
+        const citation = make("p", "citation");
+        if (item.authors) citation.appendChild(document.createTextNode(item.authors + " "));
+        if (item.year) citation.appendChild(document.createTextNode("(" + item.year + "). "));
+        if (item.source_title) citation.appendChild(make("em", "", item.source_title + "."));
+        if (item.volume_issue) citation.appendChild(document.createTextNode(" " + item.volume_issue + "."));
+        if (item.doi) citation.appendChild(document.createTextNode(" DOI: " + item.doi));
+        card.appendChild(citation);
+
+        const url = safeHttpsUrl(item.url) || (item.doi ? safeHttpsUrl("https://doi.org/" + item.doi) : "");
+        if (url) {
+          const link = make("a", "pub-link", "View publication ↗");
+          link.href = url;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          card.appendChild(link);
+        }
+        journalWrap.appendChild(card);
+      }
+    });
+
+    let sibling = heading.nextElementSibling;
+    while (sibling) {
+      const next = sibling.nextElementSibling;
+      sibling.remove();
+      sibling = next;
+    }
+    heading.insertAdjacentElement("afterend", journalWrap);
+    if (presentationList.childElementCount) journalWrap.insertAdjacentElement("afterend", presentationWrap);
+  }
+
+  function renderSciComm(records) {
+    const section = document.getElementById("science-communication");
+    const intro = section.querySelector(".section-intro");
+    if (!intro) throw new Error("SciComm introduction not found.");
+    const grid = make("div", "comm-grid");
+
+    records.forEach(item => {
+      const card = make("article", "comm-card");
+      const kindText = [item.content_type, item.reading_time].filter(Boolean).join(" · ");
+      card.appendChild(make("div", "kind", kindText));
+      card.appendChild(make("h3", "", item.title));
+      if (item.description) card.appendChild(make("p", "", item.description));
+
+      const url = safeHttpsUrl(item.article_url);
+      if (url) {
+        const link = make("a", "pub-link", "Read more ↗");
+        link.href = url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        card.appendChild(link);
+      }
+      grid.appendChild(card);
+    });
+
+    let sibling = intro.nextElementSibling;
+    while (sibling) {
+      const next = sibling.nextElementSibling;
+      sibling.remove();
+      sibling = next;
+    }
+    intro.insertAdjacentElement("afterend", grid);
+  }
+
+  function renderOutreach(records) {
+    const section = document.getElementById("outreach");
+    const intro = section.querySelector(".section-intro");
+    if (!intro) throw new Error("Outreach introduction not found.");
+    const container = make("div", "outreach-database-content");
+
+    records.forEach(item => {
+      const card = make("article", "project");
+      const head = make("div", "project-head");
+      head.append(
+        make("h3", "", (item.role ? item.role + " · " : "") + (item.activity || "")),
+        make("span", "project-status", [item.period, item.role].filter(Boolean).join(" · "))
+      );
+      card.appendChild(head);
+      if (item.organisation) {
+        const organisation = make("p");
+        organisation.appendChild(make("strong", "", item.organisation));
+        card.appendChild(organisation);
+      }
+      if (item.description) card.appendChild(make("p", "", item.description));
+      if (item.location) card.appendChild(make("p", "project-meta", item.location));
+      container.appendChild(card);
+    });
+
+    let sibling = intro.nextElementSibling;
+    while (sibling) {
+      const next = sibling.nextElementSibling;
+      sibling.remove();
+      sibling = next;
+    }
+    intro.insertAdjacentElement("afterend", container);
+  }
+
+  function renderDatabase(data) {
+    if (!data || !REQUIRED_SHEETS.every(key => Array.isArray(data[key]))) {
+      throw new Error("The API response is missing one or more expected worksheets.");
+    }
+
+    const records = {};
+    REQUIRED_SHEETS.forEach(key => records[key] = publishedRecords(data[key]));
+
+    // Validate the complete response before replacing any of the existing HTML.
+    renderCV(records.cv);
+    renderResearch(records.research);
+    renderPublications(records.publications);
+    renderSciComm(records.scicomm);
+    renderOutreach(records.outreach);
+    document.documentElement.dataset.academicDatabase = "connected";
+  }
+
+  let timeoutId;
+  let script;
+  window[CALLBACK_NAME] = function (data) {
+    clearTimeout(timeoutId);
+    try {
+      renderDatabase(data);
+    } catch (error) {
+      console.error("Academic database rendering failed; existing page content has been retained where possible.", error);
+    } finally {
+      if (script) script.remove();
+      delete window[CALLBACK_NAME];
+    }
+  };
+
+  script = document.createElement("script");
+  script.src = API_URL + "?callback=" + CALLBACK_NAME;
+  script.async = true;
+  script.onerror = function () {
+    clearTimeout(timeoutId);
+    console.warn("Academic database unavailable. Displaying the existing HTML content instead.");
+    script.remove();
+    delete window[CALLBACK_NAME];
+  };
+  timeoutId = setTimeout(function () {
+    console.warn("Academic database request timed out. Displaying the existing HTML content instead.");
+    if (script) script.remove();
+    delete window[CALLBACK_NAME];
+  }, 15000);
+  document.head.appendChild(script);
+})();
+</script>
+
+
 <script>
 (function () {
   const container = document.getElementById('blog-posts');
