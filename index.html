@@ -1699,109 +1699,227 @@ header .nav nav a { font-size:16px !important; }
 
 
 <script>
-/*
- * On-demand CV export.
- * Builds a clean, selectable-text document from the CV currently rendered
- * on the page, including records loaded from the connected Google Sheets API.
- */
 (function () {
   "use strict";
-
   const button = document.getElementById("download-cv");
   if (!button) return;
 
   button.addEventListener("click", function () {
-    const cvSection = document.getElementById("cv");
-    if (!cvSection) return;
-
     const printWindow = window.open("", "_blank");
     if (!printWindow) {
       alert("Please allow pop-ups for this website to generate your CV PDF.");
       return;
     }
+    const doc = printWindow.document;
+    const page = doc.createElement("main");
+    page.className = "cv-document";
+    const clean = (node) => node ? (node.innerText || node.textContent || "").replace(/\s+/g, " ").trim() : "";
+    const el = (tag, cls, value) => {
+      const node = doc.createElement(tag);
+      if (cls) node.className = cls;
+      if (value !== undefined) node.textContent = value;
+      return node;
+    };
+    const addSection = (heading) => {
+      const s = el("section", "cv-section");
+      s.appendChild(el("h2", "cv-heading", heading));
+      page.appendChild(s);
+      return s;
+    };
+    const addEntry = (target, role, org, date, description) => {
+      const entry = el("article", "cv-entry");
+      if (role) entry.appendChild(el("h3", "cv-entry-role", role));
+      if (org) entry.appendChild(el("p", "cv-organization", org));
+      if (date) entry.appendChild(el("p", "cv-date", date));
+      if (description) entry.appendChild(el("p", "cv-body", description));
+      target.appendChild(entry);
+    };
 
-    const cv = cvSection.cloneNode(true);
-    cv.querySelectorAll(".cv-download-wrap, button, script").forEach(node => node.remove());
+    const emailNode = document.querySelector('#home a[href^="mailto:"]');
+    const email = emailNode ? emailNode.getAttribute("href").replace(/^mailto:/i, "") : "";
+    const locationNode = document.querySelector("#home .hero-note");
+    const location = locationNode ? (locationNode.textContent.split("·")[0] || "").trim() : "Malaysia";
 
-    // Convert visual tag chips into plain text for better ATS parsing.
-    cv.querySelectorAll(".tags").forEach(tags => {
-      const paragraph = document.createElement("p");
-      paragraph.className = "plain-list";
-      paragraph.textContent = Array.from(tags.querySelectorAll(".tag"))
-        .map(tag => tag.textContent.trim())
-        .filter(Boolean)
-        .join(" · ");
-      tags.replaceWith(paragraph);
+    const header = el("header", "cv-header");
+    header.appendChild(el("h1", "cv-name", "Anis Raihan Dzeidee Schaff, PhD"));
+    header.appendChild(el("p", "cv-role", "Psychology Researcher"));
+    header.appendChild(el("p", "cv-contact", [location, email].filter(Boolean).join(" | ")));
+    page.appendChild(header);
+
+    // Professional profile, taken from the CV section introduction.
+    const cv = document.getElementById("cv");
+    const intro = cv && cv.querySelector(".section-intro");
+    if (clean(intro)) {
+      const s = addSection("Professional Profile");
+      s.appendChild(el("p", "cv-body", clean(intro)));
+    }
+
+    // EDUCATION: Degree → University → Year | CGPA → Thesis.
+    const educationEntries = Array.from(document.querySelectorAll("#cv .entry")).filter(entry => {
+      const title = clean(entry.querySelector(".entry-title"));
+      return /PhD|Master|BSc|Bachelor|Degree/i.test(title);
+    });
+    if (educationEntries.length) {
+      const s = addSection("Education");
+      educationEntries.forEach(entry => {
+        const degree = clean(entry.querySelector(".entry-title"));
+        const detail = entry.querySelector(".entry-detail");
+        const university = clean(detail && detail.querySelector("strong"));
+        const rawMeta = (entry.querySelector(".entry-meta")?.innerText || "").split(/\n+/).map(v => v.trim()).filter(Boolean);
+        const yearCgpa = rawMeta.join(" | ").replace(/\s*\|\s*/g, " | ");
+        const detailText = detail ? (detail.innerText || "").split(/\n+/).map(v => v.trim()).filter(Boolean) : [];
+        const thesis = detailText.find(v => /^(Thesis|Dissertation)\s*:/i.test(v)) || "";
+        const block = el("article", "cv-entry");
+        block.appendChild(el("h3", "cv-entry-role", degree));
+        if (university) block.appendChild(el("p", "cv-organization", university));
+        if (yearCgpa) block.appendChild(el("p", "cv-date", yearCgpa));
+        if (thesis) block.appendChild(el("p", "cv-body", thesis));
+        s.appendChild(block);
+      });
+    }
+
+    // WORK EXPERIENCE: role → organization → month/year → description.
+    const workHeading = Array.from(document.querySelectorAll("#cv h3")).find(h => clean(h) === "Experiences");
+    if (workHeading) {
+      const s = addSection("Work Experience");
+      let node = workHeading.nextElementSibling;
+      while (node && node.tagName !== "H3") {
+        if (node.classList.contains("entry")) {
+          const date = clean(node.querySelector(".entry-meta"));
+          const title = clean(node.querySelector(".entry-title"));
+          const parts = title.split(/\s*[·|]\s*/);
+          const role = parts.shift() || title;
+          const org = parts.join(" · ") || clean(node.querySelector(".entry-detail strong"));
+          const description = clean(node.querySelector(".entry-detail"));
+          addEntry(s, role, org, date, description);
+        }
+        node = node.nextElementSibling;
+      }
+    }
+
+    // TEACHING EXPERIENCE: role (month/year) → description.
+    const teachingHeading = Array.from(document.querySelectorAll("#cv h3")).find(h => clean(h) === "Teaching Experience");
+    if (teachingHeading) {
+      const s = addSection("Teaching Experience");
+      let node = teachingHeading.nextElementSibling;
+      while (node && node.tagName !== "H3") {
+        if (node.classList.contains("entry")) {
+          const role = clean(node.querySelector(".entry-title"));
+          const date = clean(node.querySelector(".entry-meta"));
+          const description = clean(node.querySelector(".entry-detail"));
+          addEntry(s, date ? role + " (" + date + ")" : role, "", "", description);
+        }
+        node = node.nextElementSibling;
+      }
+    }
+
+    // Research projects from the Research section.
+    const researchProjects = Array.from(document.querySelectorAll("#research .project"));
+    if (researchProjects.length) {
+      const s = addSection("Research Experience & Projects");
+      researchProjects.forEach(project => {
+        const role = clean(project.querySelector(".project-head h3"));
+        const metaLines = (project.querySelector(".project-meta")?.innerText || "").split(/\n+/).map(v => v.trim()).filter(Boolean);
+        const descriptionHeading = Array.from(project.querySelectorAll("h4")).find(h => /Academic & Methodological Focus/i.test(clean(h)));
+        const description = descriptionHeading && descriptionHeading.nextElementSibling ? clean(descriptionHeading.nextElementSibling) : "";
+        const status = clean(project.querySelector(".project-status"));
+        const metadata = metaLines.join(" | ");
+        addEntry(s, role, metadata, status, description);
+      });
+    }
+
+    // Peer-reviewed publications from Publications.
+    const publications = Array.from(document.querySelectorAll("#publications .publication"));
+    if (publications.length) {
+      const s = addSection("Peer-Reviewed Publications");
+      publications.forEach(pub => {
+        const title = clean(pub.querySelector("h3"));
+        const citation = clean(pub.querySelector(".citation"));
+        addEntry(s, title, citation, "", "");
+      });
+    }
+
+    // Conference presentations from the Publications section.
+    const presentations = Array.from(document.querySelectorAll("#publications .presentation-entry"));
+    if (presentations.length) {
+      const s = addSection("Conference Presentations");
+      presentations.forEach(item => {
+        const title = clean(item.querySelector(".presentation-title"));
+        const dateType = clean(item.querySelector(".presentation-date"));
+        const venue = clean(item.querySelector(".presentation-location"));
+        const conference = clean(item.querySelector(".presentation-conference"));
+        addEntry(s, title, [conference, venue].filter(Boolean).join(" · "), dateType, "");
+      });
+    }
+
+    // Outreach activities from the Outreach section.
+    const activities = Array.from(document.querySelectorAll("#outreach .project"));
+    if (activities.length) {
+      const s = addSection("Community Service & Outreach");
+      activities.forEach(item => {
+        const role = clean(item.querySelector(".project-head h3"));
+        const dateRole = clean(item.querySelector(".project-status"));
+        const org = clean(item.querySelector("p strong"));
+        const description = Array.from(item.querySelectorAll("p")).map(clean).filter(v => v && v !== org).join(" ");
+        addEntry(s, role, org, dateRole, description);
+      });
+    }
+
+    // Additional CV information already present in the CV section.
+    const additional = [
+      ["Methods & Tools", "Methods & Tools"],
+      ["Teaching Areas", "Teaching Areas"],
+      ["Memberships", "Professional Memberships"],
+      ["Peer-Review Experience", "Peer-Review Experience"],
+      ["Intellectual Property & Grants", "Intellectual Property & Grants"]
+    ];
+    additional.forEach(([sourceHeading, outputHeading]) => {
+      const heading = Array.from(document.querySelectorAll("#cv h3")).find(h => clean(h) === sourceHeading);
+      if (!heading) return;
+      const s = addSection(outputHeading);
+      let node = heading.nextElementSibling;
+      while (node && node.tagName !== "H3") {
+        if (node.classList.contains("entry")) {
+          const meta = clean(node.querySelector(".entry-meta"));
+          const title = clean(node.querySelector(".entry-title"));
+          const detail = clean(node.querySelector(".entry-detail"));
+          addEntry(s, title, detail, meta, "");
+        } else if (node.classList.contains("tags")) {
+          const tags = Array.from(node.querySelectorAll(".tag")).map(clean).filter(Boolean);
+          if (tags.length) s.appendChild(el("p", "cv-body", tags.join(" · ")));
+        } else if (node.matches("p, ul")) {
+          const value = clean(node);
+          if (value) s.appendChild(el("p", "cv-body", value));
+        }
+        node = node.nextElementSibling;
+      }
     });
 
-    // Flatten card-like entries into a simple, linear document flow.
-    cv.querySelectorAll(".entry").forEach(entry => {
-      entry.style.display = "block";
-      entry.style.border = "0";
-      entry.style.borderRadius = "0";
-      entry.style.boxShadow = "none";
-      entry.style.background = "transparent";
-      entry.style.padding = "0";
-      entry.style.margin = "0 0 12px";
-    });
-
-    const contact = document.querySelector('#home a[href^="mailto:"]');
-    const email = contact ? contact.getAttribute("href").replace(/^mailto:/i, "") : "";
-    const heroNote = document.querySelector("#home .hero-note");
-    const location = heroNote ? (heroNote.textContent.split("·")[0] || "").trim() : "Malaysia";
-
-    const title = document.createElement("header");
-    title.className = "print-header";
-    title.innerHTML = '<h1>Anis Raihan Dzeidee Schaff, PhD</h1><p>Psychology Researcher</p>';
-    const contactLine = document.createElement("p");
-    contactLine.className = "contact-line";
-    contactLine.textContent = [location, email].filter(Boolean).join(" | ");
-    title.appendChild(contactLine);
-
-    const documentTitle = "Anis Raihan Dzeidee Schaff - Academic CV";
     const styles = `
-      @page { size: A4; margin: 17mm 18mm 18mm; }
+      @page { size: A4; margin: 17mm 19mm 18mm; }
       * { box-sizing: border-box; }
       html, body { margin: 0; padding: 0; background: #fff; color: #000; }
-      body { font-family: Inter, Arial, sans-serif; font-size: 9.5pt; line-height: 1.42; }
-      .print-header { margin: 0 0 18px; padding: 0 0 12px; border-bottom: 1px solid #000; }
-      .print-header h1 { margin: 0 0 3px; font-family: Inter, Arial, sans-serif; font-size: 19pt; line-height: 1.2; font-weight: 700; color: #000; }
-      .print-header > p { margin: 2px 0; font-size: 10pt; color: #000; }
-      .print-header .contact-line { margin-top: 7px; font-size: 8.5pt; }
-      #cv { display: block !important; max-width: none !important; width: 100% !important; margin: 0 !important; padding: 0 !important; }
-      #cv > .eyebrow, #cv > h2 { display: none !important; }
-      #cv .section-intro { margin: 0 0 14px; font-size: 9.5pt; color: #000; }
-      #cv h3 { margin: 17px 0 7px !important; padding: 0 0 3px; border-bottom: 1px solid #777; color: #000 !important; font-family: Inter, Arial, sans-serif !important; font-size: 11pt !important; font-weight: 700 !important; page-break-after: avoid; }
-      #cv .entry { display: block !important; margin: 0 0 10px !important; padding: 0 !important; border: 0 !important; background: transparent !important; box-shadow: none !important; break-inside: avoid; }
-      #cv .entry-meta { display: block; margin: 0 0 2px; color: #000 !important; font-size: 8.5pt !important; font-weight: 600; }
-      #cv .entry-title { margin: 0 0 2px; color: #000 !important; font-size: 9.5pt !important; font-weight: 700 !important; }
-      #cv .entry-detail, #cv .entry-detail strong { color: #000 !important; font-size: 9pt !important; }
-      #cv .plain-list { margin: 0 0 9px; color: #000; font-size: 9pt; }
-      #cv .tag { display: inline; padding: 0; border: 0; background: transparent; color: #000; font-size: 9pt; }
-      #cv a { color: #000; text-decoration: none; }
-      #cv p, #cv li { color: #000; }
-      @media screen {
-        body { max-width: 800px; margin: 24px auto; padding: 24px; }
-      }
+      body { font-family: Inter, Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 1.48; }
+      .cv-document { width: 100%; max-width: 780px; margin: 0 auto; }
+      .cv-header { margin: 0 0 19px; padding: 0 0 12px; border-bottom: 1px solid #000; }
+      .cv-name { margin: 0 0 3px; color: #000; font-family: "Noto Serif", Georgia, serif; font-size: 14px; font-weight: 700; line-height: 1.35; }
+      .cv-role, .cv-entry-role { margin: 0 0 3px; color: #000; font-family: "Noto Serif", Georgia, serif; font-size: 13px; font-weight: 400; line-height: 1.4; }
+      .cv-contact, .cv-organization, .cv-date, .cv-body { margin: 0 0 4px; color: #000; font-family: Inter, Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 1.48; }
+      .cv-organization { font-weight: 600; }
+      .cv-section { margin: 0 0 17px; }
+      .cv-heading { margin: 0 0 9px; padding: 0 0 4px; border-bottom: 1px solid #888; color: #000; font-family: "Noto Serif", Georgia, serif; font-size: 13px; font-weight: 700; line-height: 1.35; page-break-after: avoid; }
+      .cv-entry { margin: 0 0 11px; break-inside: avoid; page-break-inside: avoid; }
+      .cv-entry-role { margin-bottom: 2px; }
+      @media screen { body { max-width: 780px; margin: 24px auto; padding: 24px; } }
+      @media print { .cv-document { max-width: none; } }
     `;
-
-    printWindow.document.open();
-    printWindow.document.write('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>' +
-      documentTitle + '</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>' +
-      styles + '</style></head><body></body></html>');
-    printWindow.document.close();
-    printWindow.document.body.appendChild(title);
-    printWindow.document.body.appendChild(cv);
-
-    const startPrint = function () {
-      printWindow.focus();
-      setTimeout(function () { printWindow.print(); }, 250);
-    };
-    if (printWindow.document.fonts && printWindow.document.fonts.ready) {
-      printWindow.document.fonts.ready.then(startPrint).catch(startPrint);
-    } else {
-      setTimeout(startPrint, 500);
-    }
+    doc.open();
+    doc.write('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Anis Raihan Dzeidee Schaff - Academic CV</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet"><style>' + styles + '</style></head><body></body></html>');
+    doc.close();
+    doc.body.appendChild(page);
+    const print = () => { printWindow.focus(); setTimeout(() => printWindow.print(), 300); };
+    if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(print).catch(print);
+    else setTimeout(print, 600);
   });
 })();
 </script>
