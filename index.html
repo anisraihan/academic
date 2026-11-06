@@ -526,32 +526,32 @@ button:hover, .button:hover, .btn:hover {
 #publications .presentation-title { margin:12px 0 0; }
 
 /* Blog post blocks */
-#blog .blog-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
-#blog .blog-card {
+#insights .blog-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+#insights .blog-card {
   display:flex; flex-direction:column; align-items:flex-start;
   min-height:230px; padding:24px;
   border:1px solid #E3E7EC; border-left:3px solid #7895AA;
   background:#FFFFFF; box-shadow:0 2px 8px rgba(31,42,68,.035);
 }
-#blog .blog-date {
+#insights .blog-date {
   margin:0 0 12px; color:#667085 !important;
   font-family:Inter,Arial,sans-serif !important; font-size:13px !important;
 }
-#blog .blog-card h3 {
+#insights .blog-card h3 {
   margin:0 0 12px; font-size:20px !important;
   font-family:"Noto Serif",Georgia,serif !important; font-weight:700 !important;
 }
-#blog .blog-card h3 a { color:#1F2A44 !important; }
-#blog .blog-card > p:not(.blog-date) {
+#insights .blog-card h3 a { color:#1F2A44 !important; }
+#insights .blog-card > p:not(.blog-date) {
   font-family:Inter,Arial,sans-serif !important; font-size:17px !important;
   color:#667085 !important; line-height:1.5;
 }
-#blog .blog-read-more, #blog .blog-source a {
+#insights .blog-read-more, #insights .blog-source a {
   color:#1F2A44 !important; font-size:14px !important; font-weight:700;
 }
-#blog .blog-read-more { margin-top:auto; padding-top:12px; }
-#blog .blog-source { margin-top:24px; }
-#blog .blog-card a:hover, #blog .blog-source a:hover { color:#7895AA !important; }
+#insights .blog-read-more { margin-top:auto; padding-top:12px; }
+#insights .blog-source { margin-top:24px; }
+#insights .blog-card a:hover, #insights .blog-source a:hover { color:#7895AA !important; }
 
  /* Footer font sizes increased by 2px from the previous requested version */
 footer a, .footer a, .social-links a, .footer-links a { font-size:15px !important; }
@@ -561,7 +561,7 @@ footer { justify-content:center !important; }
 footer small { width:100%; text-align:center; }
 
 @media(max-width:800px) {
-  #blog .blog-grid { grid-template-columns:1fr; }
+  #insights .blog-grid { grid-template-columns:1fr; }
 }
 
 
@@ -620,14 +620,238 @@ footer small { font-size:14px !important; }
   .home-action { padding:11px 18px; }
 }
 
+
+/* SciComm editorial gallery */
+#science-communication .scicomm-page-title{
+  max-width:850px;
+  margin:0 0 18px;
+  font-size:clamp(30px,4.2vw,46px) !important;
+  line-height:1.22 !important;
+  letter-spacing:-.035em !important;
+  text-align:left;
+}
+#science-communication .section-intro{
+  max-width:690px;
+  margin:0 0 38px;
+  color:#667085 !important;
+  font-family:Inter,Arial,sans-serif !important;
+  font-size:17px !important;
+  line-height:1.6 !important;
+}
+#science-communication .comm-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:24px;
+  align-items:stretch;
+}
+#science-communication .comm-card{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  padding:0;
+  overflow:hidden;
+  border:1px solid #E3E7EC;
+  border-radius:4px;
+  background:#fff;
+  box-shadow:0 3px 12px rgba(31,42,68,.045);
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+#science-communication .comm-card:hover{
+  transform:translateY(-3px);
+  border-color:#B9C8D4;
+  box-shadow:0 9px 24px rgba(31,42,68,.085);
+}
+#science-communication .comm-cover{
+  display:block;
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  background:linear-gradient(145deg,#F2F5F7,#E4EBF0);
+}
+#science-communication .comm-cover-placeholder{
+  display:flex;
+  width:100%;
+  aspect-ratio:4/5;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+  background:linear-gradient(145deg,#F5F7F8,#E8EEF2);
+  color:#7895AA;
+  font-family:"Noto Serif",Georgia,serif;
+  font-size:21px;
+  line-height:1.4;
+  text-align:center;
+}
+#science-communication .comm-card-body{padding:20px 21px 22px;display:flex;flex:1;flex-direction:column;align-items:flex-start}
+#science-communication .comm-card .kind{
+  margin:0 0 11px;
+  color:#7895AA !important;
+  font-family:Inter,Arial,sans-serif !important;
+  font-size:11px !important;
+  font-weight:700;
+  letter-spacing:.09em;
+  line-height:1.4;
+  text-transform:uppercase;
+}
+#science-communication .comm-card h3{
+  margin:0 0 12px;
+  color:#1F2A44 !important;
+  font-family:"Noto Serif",Georgia,serif !important;
+  font-size:19px !important;
+  font-weight:700 !important;
+  line-height:1.4 !important;
+  letter-spacing:-.02em;
+}
+#science-communication .comm-card p{
+  margin:0 0 18px;
+  color:#667085 !important;
+  font-family:Inter,Arial,sans-serif !important;
+  font-size:15px !important;
+  line-height:1.55 !important;
+}
+#science-communication .comm-open{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:auto;
+  padding:9px 0 0;
+  border:0;
+  background:transparent;
+  color:#1F2A44;
+  font:700 13px Inter,Arial,sans-serif;
+  cursor:pointer;
+}
+#science-communication .comm-open:hover{color:#7895AA}
+#science-communication .comm-open:focus-visible,
+.scicomm-viewer-close:focus-visible{
+  outline:3px solid #9CB9C9;
+  outline-offset:4px;
+}
+#science-communication .comm-open[disabled]{
+  color:#98A2B3;
+  cursor:default;
+}
+.scicomm-viewer[hidden]{display:none !important}
+.scicomm-viewer{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(18,27,43,.78);
+}
+.scicomm-viewer-panel{
+  display:flex;
+  flex-direction:column;
+  width:min(100%,1040px);
+  max-height:calc(100vh - 48px);
+  overflow:hidden;
+  border:1px solid #DCE5EC;
+  border-radius:8px;
+  background:#fff;
+  box-shadow:0 24px 80px rgba(0,0,0,.25);
+}
+.scicomm-viewer-header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:20px;
+  padding:18px 22px;
+  border-bottom:1px solid #E3E7EC;
+}
+.scicomm-viewer-heading{min-width:0}
+.scicomm-viewer-heading h3{
+  margin:0 0 4px;
+  color:#1F2A44 !important;
+  font:700 18px/1.35 "Noto Serif",Georgia,serif !important;
+}
+.scicomm-viewer-heading p{
+  margin:0;
+  color:#667085 !important;
+  font:13px/1.4 Inter,Arial,sans-serif !important;
+}
+.scicomm-viewer-close{
+  flex:0 0 auto;
+  width:38px;
+  height:38px;
+  border:1px solid #DCE5EC;
+  border-radius:50%;
+  background:#fff;
+  color:#1F2A44;
+  font-size:22px;
+  line-height:1;
+  cursor:pointer;
+}
+.scicomm-viewer-frame-wrap{
+  flex:1;
+  min-height:300px;
+  overflow:auto;
+  background:#F5F6F8;
+}
+.scicomm-viewer-frame{
+  display:block;
+  width:100%;
+  height:min(78vh,850px);
+  min-height:500px;
+  border:0;
+  background:#fff;
+}
+body.scicomm-viewer-open{overflow:hidden}
+@media(max-width:850px){
+  #science-communication .comm-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+}
+@media(max-width:580px){
+  #science-communication .comm-grid{grid-template-columns:1fr;gap:18px}
+  #science-communication .scicomm-page-title{font-size:30px !important}
+  .scicomm-viewer{padding:8px}
+  .scicomm-viewer-panel{max-height:calc(100vh - 16px);border-radius:5px}
+  .scicomm-viewer-header{padding:14px}
+  .scicomm-viewer-frame{height:76vh;min-height:420px}
+}
+@media(prefers-reduced-motion:reduce){
+  #science-communication .comm-card{transition:none}
+}
+
+
+/* Header refinement: slightly smaller navigation and a lighter name lockup */
+.nav { align-items:center; }
+.brand-lockup { display:flex; flex-direction:column; align-items:flex-start; gap:2px; min-width:0; }
+.nav .brand {
+  display:block;
+  font-size:16px !important;
+  font-weight:600 !important;
+  line-height:1.25 !important;
+  letter-spacing:-.025em;
+  white-space:nowrap;
+}
+.brand-subtitle {
+  display:block;
+  font-family:Inter,Arial,sans-serif;
+  font-size:16px !important;
+  font-weight:400 !important;
+  line-height:1.25 !important;
+  letter-spacing:0;
+  color:#667085;
+}
+header .nav nav a { font-size:16px !important; }
+@media(max-width:800px){
+  .nav { align-items:flex-start; }
+  .brand-lockup { margin-bottom:2px; }
+  .nav .brand { white-space:normal; }
+}
 </style>
 </head>
 <body>
 <header>
  <div class="nav">
-  <a class="brand" href="#home">Anis Raihan Dzeidee Schaff, PhD</a>
+  <div class="brand-lockup">
+   <a class="brand" href="#home">Anis Raihan Dzeidee Schaff, PhD</a>
+   <span class="brand-subtitle">Psychology Researcher</span>
+  </div>
   <nav aria-label="Main navigation">
-   <a href="#home">Home</a><a href="#cv">CV</a><a href="#research">Research</a><a href="#publications">Publication</a><a href="#science-communication">SciComm</a><a href="#outreach">Outreach</a><a href="#blog">Blog</a>
+   <a href="#home">Home</a><a href="#cv">CV</a><a href="#research">Research</a><a href="#publications">Publication</a><a href="#outreach">Outreach</a><a href="#science-communication">SciComm</a><a href="#insights">Insights</a>
   </nav>
  </div>
 </header>
@@ -675,7 +899,7 @@ footer small { font-size:14px !important; }
 
  <section id="cv">
   <p class="eyebrow">Curriculum Vitae</p><h2>Background</h2>
-  <p class="cv-download-wrap"><a class="cv-download" href="#download-academic-cv" id="download-academic-cv">Download CV (PDF) <span aria-hidden="true">↓</span></a></p>
+  <p class="cv-download-wrap"><button class="cv-download" id="download-cv" type="button">Download CV <span aria-hidden="true">↓</span></button></p>
   <p class="section-intro">Training and experience across psychological medicine, neuroscience, research implementation, and public engagement.</p>
   <h3>Academic Education</h3>
   <div class="entry"><div class="entry-meta">2021–2026<br>CGPA 3.83</div><div><div class="entry-title">PhD in Psychological Medicine</div><div class="entry-detail"><strong>Universiti Putra Malaysia (UPM)</strong><br>Thesis: Structural Relations Between Parental Mental Health, Self-Efficacy, Parenting Behaviour, and Early Adolescent Mental Health Among Malay Families in Malaysia.</div></div></div>
@@ -820,8 +1044,8 @@ footer small { font-size:14px !important; }
  </section>
 
  <section id="science-communication">
-  <p class="eyebrow">Science Communication Hub</p><h2>Psychology, beyond the journal</h2>
-  <p class="section-intro">Research explainers and practical perspectives designed to make psychological science more accessible.</p>
+  <p class="eyebrow">Science Communication</p><h2 class="scicomm-page-title">Psychology and Neuroscience,<br class="scicomm-title-break"> Beyond the Journal</h2>
+  <p class="section-intro">Visual stories, research explainers and accessible perspectives at the intersection of psychology, neuroscience, and everyday life.</p>
   <div class="comm-grid">
    <article class="comm-card"><div class="kind">Research explainer · 5 min read</div><h3>Understanding Parent Efficacy: How Confidence Shapes Youth Mental Well-being</h3><p>Why believing in your ability as a parent can shape parent–child interactions and youth resilience.</p></article>
    <article class="comm-card"><div class="kind">Practical guide · 7 min read</div><h3>Psychological First Aid in Schools: Supporting Students in Crisis</h3><p>A practical breakdown of Look, Listen, and Link principles for educators responding to emotional distress.</p></article>
@@ -872,19 +1096,19 @@ footer small { font-size:14px !important; }
  </section>
 
 
-  <section id="blog">
-   <p class="eyebrow">Writings &amp; Reflections</p>
-   <h2>Blog</h2>
+  <section id="insights">
+   <p class="eyebrow">Rambles &amp; Reflections</p>
+   <h2>Insights</h2>
    <p class="section-intro">Notes, reflections, and ideas on psychology, neuroscience, mental health, and the experiences that shape us.</p>
-   <div id="blog-posts" class="blog-grid" aria-live="polite">
-    <article class="blog-card">
-     <p class="blog-date">22 October 2026</p>
-     <h3><a href="https://theanisraihan.blogspot.com/2026/10/foreword.html" target="_blank" rel="noopener">Foreword</a></h3>
-     <p>A space for collecting thoughts, exploring ideas, and reflecting on psychology, neuroscience, mental health, and the contexts in which people grow.</p>
-     <a class="blog-read-more" href="https://theanisraihan.blogspot.com/2026/10/foreword.html" target="_blank" rel="noopener">Read on the blog →</a>
+   <div id="insights-posts" class="blog-grid" aria-live="polite">
+    <article class="blog-card insights-empty">
+     <p class="blog-date">Substack · Coming soon</p>
+     <h3>Nothing published just yet.</h3>
+     <p>New writing will appear here automatically when the first article is published on Substack.</p>
+     <a class="blog-read-more" href="https://theanisraihan.substack.com/" target="_blank" rel="noopener">Visit the publication →</a>
     </article>
    </div>
-   <p class="blog-source"><a href="https://theanisraihan.blogspot.com/" target="_blank" rel="noopener">Visit Writings &amp; Reflections →</a></p>
+   <p class="blog-source"><a href="https://substack.com/@theanisraihan" target="_blank" rel="noopener">Explore my Substack profile →</a></p>
   </section>
 
 </main>
@@ -1158,23 +1382,118 @@ footer small { font-size:14px !important; }
     const section = document.getElementById("science-communication");
     const intro = section.querySelector(".section-intro");
     if (!intro) throw new Error("SciComm introduction not found.");
+
     const grid = make("div", "comm-grid");
+    const safeCanvaEmbedUrl = (value) => {
+      if (!value) return "";
+      try {
+        const url = new URL(String(value).trim());
+        const hostAllowed = url.hostname === "canva.com" || url.hostname.endsWith(".canva.com");
+        if (url.protocol !== "https:" || !hostAllowed || !url.pathname.includes("/design/")) return "";
+        return url.href;
+      } catch (_) {
+        return "";
+      }
+    };
+
+    // One reusable viewer. The iframe is created only after a reader opens an item.
+    let viewer = document.getElementById("scicomm-viewer");
+    if (!viewer) {
+      viewer = make("div", "scicomm-viewer");
+      viewer.id = "scicomm-viewer";
+      viewer.hidden = true;
+      viewer.setAttribute("role", "dialog");
+      viewer.setAttribute("aria-modal", "true");
+      viewer.setAttribute("aria-labelledby", "scicomm-viewer-title");
+
+      const panel = make("div", "scicomm-viewer-panel");
+      const viewerHeader = make("div", "scicomm-viewer-header");
+      const viewerHeading = make("div", "scicomm-viewer-heading");
+      const viewerTitle = make("h3", "", "");
+      viewerTitle.id = "scicomm-viewer-title";
+      const viewerMeta = make("p", "", "");
+      const close = make("button", "scicomm-viewer-close", "×");
+      close.type = "button";
+      close.setAttribute("aria-label", "Close viewer");
+      viewerHeading.append(viewerTitle, viewerMeta);
+      viewerHeader.append(viewerHeading, close);
+
+      const frameWrap = make("div", "scicomm-viewer-frame-wrap");
+      frameWrap.id = "scicomm-viewer-frame-wrap";
+      panel.append(viewerHeader, frameWrap);
+      viewer.appendChild(panel);
+      document.body.appendChild(viewer);
+
+      const closeViewer = () => {
+        viewer.hidden = true;
+        document.body.classList.remove("scicomm-viewer-open");
+        frameWrap.replaceChildren();
+        if (viewer.returnFocusTo && document.contains(viewer.returnFocusTo)) {
+          viewer.returnFocusTo.focus();
+        }
+      };
+      close.addEventListener("click", closeViewer);
+      viewer.addEventListener("click", event => {
+        if (event.target === viewer) closeViewer();
+      });
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && !viewer.hidden) closeViewer();
+      });
+    }
+
+    const viewerTitle = viewer.querySelector("#scicomm-viewer-title");
+    const viewerMeta = viewer.querySelector(".scicomm-viewer-heading p");
+    const frameWrap = viewer.querySelector("#scicomm-viewer-frame-wrap");
 
     records.forEach(item => {
       const card = make("article", "comm-card");
-      const kindText = [item.content_type, item.reading_time].filter(Boolean).join(" · ");
-      card.appendChild(make("div", "kind", kindText));
-      card.appendChild(make("h3", "", item.title));
-      if (item.description) card.appendChild(make("p", "", item.description));
 
-      const url = safeHttpsUrl(item.article_url);
-      if (url) {
-        const link = make("a", "pub-link", "Read more ↗");
-        link.href = url;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        card.appendChild(link);
+      const coverUrl = safeHttpsUrl(item.image_url);
+      if (coverUrl) {
+        const cover = make("img", "comm-cover");
+        cover.src = coverUrl;
+        cover.alt = item.title ? "Cover image: " + item.title : "Science communication cover";
+        cover.loading = "lazy";
+        cover.decoding = "async";
+        card.appendChild(cover);
+      } else {
+        card.appendChild(make("div", "comm-cover-placeholder", item.content_type || "Psychology & Neuroscience"));
       }
+
+      const body = make("div", "comm-card-body");
+      const kindText = [item.content_type, item.publication_date, item.reading_time]
+        .filter(Boolean).join(" · ");
+      body.appendChild(make("div", "kind", kindText));
+      body.appendChild(make("h3", "", item.title || "Untitled"));
+      if (item.description) body.appendChild(make("p", "", item.description));
+
+      const embedUrl = safeCanvaEmbedUrl(item.embed_url);
+      const open = make("button", "comm-open", embedUrl ? "View editorial ↗" : "Coming soon");
+      open.type = "button";
+      open.disabled = !embedUrl;
+      if (embedUrl) {
+        open.addEventListener("click", () => {
+          viewerTitle.textContent = item.title || "Science communication";
+          viewerMeta.textContent = [item.content_type, item.publication_date].filter(Boolean).join(" · ");
+          frameWrap.replaceChildren();
+
+          const frame = make("iframe", "scicomm-viewer-frame");
+          frame.src = embedUrl;
+          frame.title = item.title || "Embedded Canva editorial";
+          frame.loading = "eager";
+          frame.referrerPolicy = "strict-origin-when-cross-origin";
+          // Sandbox prevents the embedded design from opening pop-ups or navigating the parent website.
+          frame.setAttribute("sandbox", "allow-scripts allow-same-origin allow-forms");
+          frameWrap.appendChild(frame);
+
+          viewer.returnFocusTo = open;
+          viewer.hidden = false;
+          document.body.classList.add("scicomm-viewer-open");
+          viewer.querySelector(".scicomm-viewer-close").focus();
+        });
+      }
+      body.appendChild(open);
+      card.appendChild(body);
       grid.appendChild(card);
     });
 
@@ -1227,8 +1546,6 @@ footer small { font-size:14px !important; }
 
     const records = {};
     REQUIRED_SHEETS.forEach(key => records[key] = publishedRecords(data[key]));
-    // Shared source of truth for the website and downloadable academic CV.
-    window.academicDatabaseRecords = records;
 
     // Validate the complete response before replacing any of the existing HTML.
     renderCV(records.cv);
@@ -1274,154 +1591,306 @@ footer small { font-size:14px !important; }
 
 <script>
 (function () {
-  const container = document.getElementById('blog-posts');
+  const container = document.getElementById('insights-posts');
   if (!container) return;
-  const feedUrl = 'https://theanisraihan.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=12&callback=renderRaihanBloggerFeed';
-  window.renderRaihanBloggerFeed = function (data) {
-    const entries = (data && data.feed && data.feed.entry) || [];
-    if (!entries.length) return;
-    const safeText = (htmlText) => {
-      const doc = new DOMParser().parseFromString(htmlText || '', 'text/html');
-      return (doc.body.textContent || '').replace(/\s+/g, ' ').trim();
-    };
-    const getLink = (entry) => {
-      const link = (entry.link || []).find(item => item.rel === 'alternate');
-      return link ? link.href : 'https://theanisraihan.blogspot.com/';
-    };
-    const formatDate = (value) => {
-      const date = new Date(value);
-      return Number.isNaN(date.getTime()) ? '' : date.toLocaleDateString(undefined, {day:'numeric',month:'long',year:'numeric'});
-    };
+
+  const feedUrl = 'https://theanisraihan.substack.com/feed';
+  const feedProxy = 'https://proxy.cors.dev/' + feedUrl;
+
+  const plainText = (value) => {
+    const doc = new DOMParser().parseFromString(value || '', 'text/html');
+    return (doc.body.textContent || '').replace(/\s+/g, ' ').trim();
+  };
+
+  const firstText = (parent, selectors) => {
+    for (const selector of selectors) {
+      const node = parent.querySelector(selector);
+      if (node && (node.textContent || '').trim()) return (node.textContent || '').trim();
+    }
+    return '';
+  };
+
+  const makeCard = (item) => {
+    const card = document.createElement('article');
+    card.className = 'blog-card';
+
+    const dateEl = document.createElement('p');
+    dateEl.className = 'blog-date';
+    const parsedDate = new Date(item.date);
+    dateEl.textContent = Number.isNaN(parsedDate.getTime())
+      ? 'Substack'
+      : parsedDate.toLocaleDateString(undefined, {day:'numeric', month:'long', year:'numeric'});
+
+    const heading = document.createElement('h3');
+    const titleLink = document.createElement('a');
+    titleLink.href = item.link;
+    titleLink.target = '_blank';
+    titleLink.rel = 'noopener noreferrer';
+    titleLink.textContent = item.title || 'Untitled post';
+    heading.appendChild(titleLink);
+
+    const excerpt = document.createElement('p');
+    excerpt.textContent = item.description
+      ? (item.description.length > 240 ? item.description.slice(0, 237).trim() + '…' : item.description)
+      : 'Read the latest reflection on Substack.';
+
+    const readMore = document.createElement('a');
+    readMore.className = 'blog-read-more';
+    readMore.href = item.link;
+    readMore.target = '_blank';
+    readMore.rel = 'noopener noreferrer';
+    readMore.textContent = 'Read on Substack →';
+
+    card.append(dateEl, heading, excerpt, readMore);
+    return card;
+  };
+
+  const showEmptyState = (message) => {
     container.innerHTML = '';
-    entries.forEach(entry => {
-      const url = getLink(entry);
-      const title = safeText(entry.title && entry.title.$t) || 'Untitled post';
-      const excerpt = safeText(entry.summary && entry.summary.$t || entry.content && entry.content.$t).slice(0, 220);
-      const date = formatDate(entry.published && entry.published.$t);
-      const card = document.createElement('article');
-      card.className = 'blog-card';
-      const dateEl = document.createElement('p');
-      dateEl.className = 'blog-date';
-      dateEl.textContent = date;
-      const heading = document.createElement('h3');
-      const titleLink = document.createElement('a');
-      titleLink.href = url;
-      titleLink.target = '_blank';
-      titleLink.rel = 'noopener';
-      titleLink.textContent = title;
-      heading.appendChild(titleLink);
-      const excerptEl = document.createElement('p');
-      excerptEl.textContent = excerpt + (excerpt.length >= 220 ? '…' : '');
-      const readMore = document.createElement('a');
-      readMore.className = 'blog-read-more';
-      readMore.href = url;
-      readMore.target = '_blank';
-      readMore.rel = 'noopener';
-      readMore.textContent = 'Read on the blog →';
-      card.append(dateEl, heading, excerptEl, readMore);
-      container.appendChild(card);
+    const card = document.createElement('article');
+    card.className = 'blog-card insights-empty';
+    const label = document.createElement('p');
+    label.className = 'blog-date';
+    label.textContent = 'Substack';
+    const heading = document.createElement('h3');
+    heading.textContent = 'Your first essay will appear here.';
+    const description = document.createElement('p');
+    description.textContent = message;
+    const link = document.createElement('a');
+    link.className = 'blog-read-more';
+    link.href = 'https://theanisraihan.substack.com/';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = 'Visit the publication →';
+    card.append(label, heading, description, link);
+    container.appendChild(card);
+  };
+
+  fetch(feedProxy, { method: 'GET' })
+    .then((response) => {
+      if (!response.ok) throw new Error('Substack feed request failed: ' + response.status);
+      return response.text();
+    })
+    .then((xmlText) => {
+      const xml = new DOMParser().parseFromString(xmlText, 'application/xml');
+      if (xml.querySelector('parsererror')) throw new Error('Unable to parse Substack RSS feed.');
+
+      const items = Array.from(xml.querySelectorAll('item')).map((item) => ({
+        title: firstText(item, ['title']),
+        link: firstText(item, ['link']),
+        date: firstText(item, ['pubDate']),
+        description: plainText(firstText(item, ['description']))
+      })).filter((item) => item.title && item.link);
+
+      if (!items.length) {
+        showEmptyState('There are no published articles yet. Once you publish on Substack, your latest writing will be listed here automatically.');
+        return;
+      }
+
+      container.innerHTML = '';
+      items.slice(0, 10).forEach((item) => container.appendChild(makeCard(item)));
+    })
+    .catch((error) => {
+      console.warn('Substack feed could not be loaded.', error);
+      showEmptyState('The latest writing feed is temporarily unavailable. You can still visit the publication or profile directly.');
     });
-  };
-  const script = document.createElement('script');
-  script.src = feedUrl;
-  script.onerror = function () {
-    // Keep the latest known post card in place if Blogger's feed is unavailable.
-  };
-  document.head.appendChild(script);
 })();
 </script>
 
 
-
 <script>
-/* Dynamic academic CV PDF: generated from the same published Google Sheets records as the site. */
-(function () {
+(() => {
   "use strict";
-  const trigger = document.getElementById("download-academic-cv");
-  if (!trigger) return;
+  const button = document.getElementById("download-cv");
+  if (!button) return;
 
-  const clean = value => String(value == null ? "" : value).replace(/\s+/g, " ").trim();
-  const esc = value => clean(value).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
-  const rows = (arr, category) => (arr || []).filter(x => !category || clean(x.category).toLowerCase() === category.toLowerCase());
-  const link = (label, href) => {
-    const url = clean(href);
-    if (!/^https:\/\//i.test(url)) return esc(label);
-    return '<a href="' + esc(url) + '">' + esc(label) + '</a>';
+  const textOf = node => (node?.innerText || node?.textContent || "").replace(/\s+/g, " ").trim();
+  const cleanClone = node => {
+    const clone = node.cloneNode(true);
+    clone.querySelectorAll("script,style,button,img,iframe").forEach(el => el.remove());
+    clone.querySelectorAll("a").forEach(a => {
+      const href = a.getAttribute("href");
+      if (href) {
+        a.setAttribute("target", "_blank");
+        a.setAttribute("rel", "noopener noreferrer");
+      }
+    });
+    return clone;
   };
-  const section = (label, content) => content ? '<section class="cv-row"><div class="cv-label">' + esc(label) + '</div><div class="cv-content">' + content + '</div></section>' : '';
-  const item = (title, meta, desc, href) => {
-    const heading = href ? link(title, href) : esc(title);
-    return '<article class="cv-item">' + (title ? '<div class="cv-item-title">' + heading + '</div>' : '') +
-      (meta ? '<div class="cv-meta">' + esc(meta) + '</div>' : '') +
-      (desc ? '<div class="cv-description">' + esc(desc) + '</div>' : '') + '</article>';
-  };
-  const list = values => values.filter(Boolean).map(v => '<li>' + esc(v) + '</li>').join('');
+  const headingMap = new Map([
+    ["academic education", "Education"], ["education", "Education"],
+    ["experiences", "Work Experience"], ["work experience", "Work Experience"],
+    ["teaching experience", "Teaching Experience"],
+    ["research experience & projects", "Research Projects"],
+    ["research projects", "Research Projects"],
+    ["peer-reviewed publications", "Publications"], ["publications", "Publications"],
+    ["conference presentations", "Conference Presentations and Proceedings"],
+    ["presentations", "Conference Presentations and Proceedings"],
+    ["methods & tools", "Research and Technical Skills"],
+    ["research and technical skills", "Research and Technical Skills"],
+    ["teaching areas", "Teaching Areas"],
+    ["intellectual property & grants", "Intellectual Property"],
+    ["intellectual property", "Intellectual Property"],
+    ["peer-review experience", "Peer-Review Experience"],
+    ["workshops and training", "Workshops and Training"],
+    ["workshops & training", "Workshops and Training"],
+    ["memberships", "Professional Memberships"],
+    ["professional memberships", "Professional Memberships"],
+    ["community service & outreach", "Community Service and Outreach"],
+    ["community service and outreach", "Community Service and Outreach"],
+    ["outreach", "Community Service and Outreach"]
+  ]);
 
-  trigger.addEventListener("click", function (event) {
-    event.preventDefault();
-    const db = window.academicDatabaseRecords;
-    if (!db) {
-      alert("The academic database has not finished loading. Please wait a moment and try Download CV again.");
+  function getHeadingGroups(root) {
+    const groups = [];
+    const headings = Array.from(root.querySelectorAll(":scope > h3"));
+    headings.forEach(h => {
+      const label = headingMap.get(textOf(h).toLowerCase());
+      if (!label) return;
+      const nodes = [];
+      let node = h.nextElementSibling;
+      while (node && node.tagName !== "H3") {
+        nodes.push(node);
+        node = node.nextElementSibling;
+      }
+      groups.push({ label, nodes });
+    });
+    return groups;
+  }
+
+  function buildDocument() {
+    const cv = document.getElementById("cv");
+    const page = document.createElement("main");
+    page.className = "cv-document";
+    const add = (tag, cls, value) => {
+      const el = document.createElement(tag);
+      if (cls) el.className = cls;
+      if (value) el.textContent = value;
+      return el;
+    };
+    const addSection = (label, nodes) => {
+      const meaningful = nodes.filter(node => textOf(node) || node.querySelector?.("a"));
+      if (!meaningful.length) return;
+      const row = add("section", "cv-section");
+      row.appendChild(add("h2", "cv-section-label", label));
+      const content = add("div", "cv-section-content");
+      meaningful.forEach(node => content.appendChild(cleanClone(node)));
+      row.appendChild(content);
+      page.appendChild(row);
+    };
+
+    const header = add("header", "cv-header");
+    header.appendChild(add("h1", "cv-name", "Anis Raihan Dzeidee Schaff, PhD"));
+    header.appendChild(add("p", "cv-role", "Psychology Researcher"));
+    const links = add("div", "cv-links");
+    const email = document.querySelector('#home a[href^="mailto:"]');
+    const footerLinks = Array.from(document.querySelectorAll("footer .footer-links a"));
+    const linkSpecs = [
+      ["Email", email?.getAttribute("href") || footerLinks.find(a => /email/i.test(textOf(a)))?.href],
+      ["Google Scholar", footerLinks.find(a => /google scholar/i.test(textOf(a)))?.href],
+      ["Scopus", footerLinks.find(a => /^scopus$/i.test(textOf(a)))?.href],
+      ["Academic Website", location.href.split("#")[0]]
+    ];
+    linkSpecs.forEach(([label, href]) => {
+      if (!href) return;
+      const a = add("a", "", label);
+      a.href = href;
+      if (!href.startsWith("mailto:")) { a.target = "_blank"; a.rel = "noopener noreferrer"; }
+      links.appendChild(a);
+    });
+    header.appendChild(links);
+    page.appendChild(header);
+
+    // Prefer the live database-rendered CV. The static HTML remains the fallback.
+    const dbContent = cv?.querySelector(".cv-database-content");
+    const groups = dbContent ? getHeadingGroups(dbContent) : getHeadingGroups(cv);
+    const emitted = new Set();
+    groups.forEach(group => {
+      if (emitted.has(group.label)) return;
+      emitted.add(group.label);
+      addSection(group.label, group.nodes);
+    });
+
+    // Sections maintained outside the CV worksheet are read directly from their live website sections.
+    const research = Array.from(document.querySelectorAll("#research .project"));
+    if (research.length && !emitted.has("Research Projects")) {
+      addSection("Research Projects", research);
+      emitted.add("Research Projects");
+    } else if (research.length && dbContent) {
+      // The database version is authoritative; no duplicate project list is added.
+    }
+
+    const pubList = document.querySelector("#publications .publication-list");
+    const staticPubs = Array.from(document.querySelectorAll("#publications .publication"));
+    if (!emitted.has("Publications")) {
+      addSection("Publications", pubList ? [pubList] : staticPubs);
+      emitted.add("Publications");
+    }
+    const presentations = Array.from(document.querySelectorAll("#publications .presentation-entry"));
+    if (!emitted.has("Conference Presentations and Proceedings")) {
+      addSection("Conference Presentations and Proceedings", presentations);
+      emitted.add("Conference Presentations and Proceedings");
+    }
+
+    const outreach = Array.from(document.querySelectorAll("#outreach .project"));
+    if (!emitted.has("Community Service and Outreach")) {
+      addSection("Community Service and Outreach", outreach);
+      emitted.add("Community Service and Outreach");
+    }
+
+    // Explicitly requested referee statement; no referee identities are exposed.
+    addSection("Referees", [add("p", "cv-plain", "Available upon request.")]);
+
+    return page;
+  }
+
+  button.addEventListener("click", () => {
+    const printWindow = window.open("", "_blank");
+    if (!printWindow) {
+      alert("Please allow pop-ups for this website to generate your CV PDF.");
       return;
     }
-    const win = window.open("", "_blank");
-    if (!win) { alert("Allow pop-ups for this website to generate your CV PDF."); return; }
-
-    const cv = db.cv || [], research = db.research || [], pubs = db.publications || [], outreach = db.outreach || [];
-    const education = rows(cv, "Academic Education").map(r => item(r.title, [r.institution, r.period, r.value].filter(Boolean).join(" | "), r.description));
-    const work = rows(cv, "Research & Professional Appointments").map(r => item(r.title, [r.institution, r.period].filter(Boolean).join(" | "), r.description));
-    const teaching = rows(cv, "Teaching Experience").map(r => item(r.title, r.period, r.description));
-    const researchItems = research.map(r => item(r.title, [r.role, r.institution, r.period, r.project_type, r.funding, r.status].filter(Boolean).join(" | "), r.academic_focus));
-
-    const publicationItems = pubs.filter(r => !/conference|proceeding/i.test(r.record_type || "")).map(r => {
-      const details = [r.authors, r.year ? '(' + r.year + ').' : '', r.source_title, r.volume_issue, r.doi ? 'DOI: ' + r.doi : ''].filter(Boolean).join(' ');
-      return item(r.title, details, r.description, r.url || (r.doi ? 'https://doi.org/' + r.doi.replace(/^https?:\/\/(dx\.)?doi\.org\//i,'') : ''));
-    });
-    const presentations = pubs.filter(r => /conference|proceeding/i.test(r.record_type || "")).map(r => item(r.title, [r.source_title, r.location, r.year, r.presentation_type].filter(Boolean).join(" | "), r.description, r.url));
-
-    const methods = rows(cv, "Methods & Tools");
-    const methodText = methods.map(r => r.title);
-    const skills = methodText.length ? '<ul>' + list(methodText) + '</ul>' : '';
-    const teachingAreas = rows(cv, "Teaching Areas").map(r => r.title);
-    const memberships = rows(cv, "Memberships").map(r => item(r.title, r.period, r.description));
-    const peerReview = rows(cv, "Peer-Review Experience").map(r => item(r.title, r.period, r.description));
-    const ip = rows(cv, "Intellectual Property & Grants").map(r => item(r.title, r.period, r.description));
-    const outreachItems = outreach.map(r => item([r.role, r.activity].filter(Boolean).join(" · "), [r.organisation, r.location, r.period].filter(Boolean).join(" | "), r.description));
-
-    // Use profile/contact URLs already present in the site's hero/footer. No links are invented.
-    const emailNode = document.querySelector('a[href^="mailto:"]');
-    const email = emailNode ? emailNode.getAttribute('href').replace(/^mailto:/i, '') : '';
-    const scholar = Array.from(document.querySelectorAll('a')).find(a => /google scholar/i.test(a.textContent));
-    const scopus = Array.from(document.querySelectorAll('a')).find(a => /scopus/i.test(a.textContent));
-    const website = location.origin + location.pathname;
-    const contacts = [email ? link(email, 'mailto:' + email) : '', scholar ? link('Google Scholar', scholar.href) : '', scopus ? link('Scopus', scopus.href) : '', link('Academic Website', website)].filter(Boolean).join(' &nbsp;|&nbsp; ');
-
-    const profile = document.querySelector('#home .lead, #home .hero-copy p');
-    const profileText = profile ? clean(profile.textContent) : '';
-    const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Anis Raihan Dzeidee Schaff – Academic CV</title>
-      <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-      <style>
-      @page{size:A4;margin:14mm 13mm 15mm}*{box-sizing:border-box}html,body{margin:0;padding:0;color:#111;background:#fff;font-family:Inter,Arial,sans-serif;font-size:12px;line-height:1.42}
-      .cv{width:100%;max-width:190mm;margin:0 auto}.cv-header{padding:0 0 10px;margin:0 0 13px;border-bottom:1px solid #222}.cv-name{font-size:14px;font-weight:700;margin:0 0 2px}.cv-role{font-size:13px;font-weight:400;margin:0 0 5px}.cv-contact{font-size:13px;line-height:1.5}.cv-contact a,.cv-content a{color:#111;text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
-      .cv-row{display:grid;grid-template-columns:29mm minmax(0,1fr);gap:5mm;margin:0 0 9px;break-inside:auto}.cv-label{background:#f0f0f0;padding:7px 6px;font-weight:700;align-self:stretch;break-after:avoid}.cv-content{min-width:0;padding:5px 0 2px}.cv-item{margin:0 0 8px;break-inside:avoid}.cv-item-title{font-weight:700;margin:0 0 1px;overflow-wrap:anywhere}.cv-meta{margin:0 0 2px;color:#222}.cv-description{white-space:normal;overflow-wrap:anywhere}.cv-content ul{margin:1px 0 5px;padding-left:16px}.cv-content li{margin:0 0 2px;break-inside:avoid}.cv-subhead{font-weight:700;margin:4px 0 3px}.cv-row,.cv-label{print-color-adjust:exact;-webkit-print-color-adjust:exact}
-      @media screen{body{padding:15px;background:#eee}.cv{background:white;padding:15mm;box-shadow:0 1px 8px #bbb}}
-      </style></head><body><main class="cv"><header class="cv-header"><h1 class="cv-name">Anis Raihan Dzeidee Schaff, PhD</h1><p class="cv-role">Psychology Researcher</p><div class="cv-contact">${contacts}</div></header>
-      ${profileText ? section('Career Profile','<div class="cv-description">'+esc(profileText)+'</div>') : ''}
-      ${section('Education',education.join(''))}
-      ${section('Work Experience',work.join(''))}
-      ${section('Teaching Experience',teaching.join(''))}
-      ${section('Research Projects',researchItems.join(''))}
-      ${section('Publications',publicationItems.join(''))}
-      ${section('Conference Presentations & Proceedings',presentations.join(''))}
-      ${section('Research & Technical Skills',skills)}
-      ${section('Teaching Areas',teachingAreas.length ? '<ul>'+list(teachingAreas)+'</ul>' : '')}
-      ${section('Intellectual Property',ip.join(''))}
-      ${section('Peer-Review Experience',peerReview.join(''))}
-      ${section('Professional Memberships',memberships.join(''))}
-      ${section('Community Service & Outreach',outreachItems.join(''))}
-      </main><script>window.addEventListener('load',()=>{const go=()=>{window.focus();window.print()};if(document.fonts&&document.fonts.ready){document.fonts.ready.then(go).catch(go)}else{setTimeout(go,500)}});<\\/script></body></html>`;
-    win.document.open(); win.document.write(html); win.document.close();
+    const styles = `
+      @page { size: A4; margin: 14mm 15mm 15mm; }
+      * { box-sizing: border-box; }
+      html, body { margin:0; padding:0; background:#fff; color:#111; }
+      body { font-family:Inter,Arial,sans-serif; font-size:12px; font-weight:400; line-height:1.42; }
+      .cv-document { width:100%; max-width:180mm; margin:0 auto; }
+      .cv-header { margin:0 0 13px; padding:0 0 10px; border-bottom:1px solid #1f2a44; }
+      .cv-name { margin:0 0 2px; font:700 14px/1.3 Inter,Arial,sans-serif; color:#111; }
+      .cv-role { margin:0 0 5px; font:400 13px/1.35 Inter,Arial,sans-serif; }
+      .cv-links { display:flex; flex-wrap:wrap; gap:4px 12px; font:400 13px/1.35 Inter,Arial,sans-serif; }
+      a { color:#111; text-decoration:underline; text-underline-offset:2px; overflow-wrap:anywhere; }
+      .cv-section { display:grid; grid-template-columns:31mm minmax(0,1fr); gap:5mm; margin:0; border-bottom:1px solid #e1e4e8; break-inside:auto; }
+      .cv-section-label { align-self:stretch; margin:0; padding:8px 7px; background:#f0f1f2; color:#1f2a44; font:700 11px/1.35 Inter,Arial,sans-serif; break-after:avoid; }
+      .cv-section-content { min-width:0; padding:7px 0 6px; overflow-wrap:anywhere; }
+      .cv-section-content > * { margin-top:0; margin-bottom:7px; }
+      .cv-section-content > *:last-child { margin-bottom:0; }
+      .cv-section-content .entry, .cv-section-content .publication, .cv-section-content .project,
+      .cv-section-content .presentation-entry, .cv-section-content article { padding:0 0 7px; margin:0 0 7px; border:0; border-bottom:1px solid #eceef0; box-shadow:none; break-inside:avoid; }
+      .cv-section-content h3, .cv-section-content .entry-title, .cv-section-content .presentation-title { margin:0 0 2px; font:700 12px/1.4 Inter,Arial,sans-serif; color:#111; }
+      .cv-section-content h4 { margin:5px 0 2px; font:700 12px/1.35 Inter,Arial,sans-serif; }
+      .cv-section-content p, .cv-section-content li, .cv-section-content .entry-detail,
+      .cv-section-content .entry-meta, .cv-section-content .citation, .cv-section-content .project-meta,
+      .cv-section-content .presentation-date, .cv-section-content .presentation-location,
+      .cv-section-content .presentation-conference { margin:0 0 3px; font:400 12px/1.42 Inter,Arial,sans-serif; color:#111; }
+      .cv-section-content strong, .cv-section-content b { font-weight:700; }
+      .cv-section-content ul, .cv-section-content ol { padding-left:16px; }
+      .cv-section-content .tags { display:block; margin:2px 0 5px; }
+      .cv-section-content .tag { display:inline; padding:0; margin:0; border:0; background:none; font:400 12px/1.5 Inter,Arial,sans-serif; }
+      .cv-section-content .tag:not(:last-child)::after { content:" · "; }
+      .cv-section-content .project-status { font:400 11px/1.4 Inter,Arial,sans-serif; }
+      @media screen { body { max-width:210mm; margin:20px auto; padding:16mm; box-shadow:0 1px 12px #ddd; } }
+      @media print { .cv-document { max-width:none; } .cv-section-label { print-color-adjust:exact; -webkit-print-color-adjust:exact; } }
+    `;
+    const doc = printWindow.document;
+    doc.open();
+    doc.write('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Anis Raihan Dzeidee Schaff - Academic CV</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>' + styles + '</style></head><body></body></html>');
+    doc.close();
+    doc.body.appendChild(buildDocument());
+    const print = () => { printWindow.focus(); printWindow.print(); };
+    if (doc.fonts?.ready) doc.fonts.ready.then(print).catch(print);
+    else setTimeout(print, 500);
   });
 })();
 </script>
