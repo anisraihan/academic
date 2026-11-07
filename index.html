@@ -841,6 +841,212 @@ header .nav nav a { font-size:16px !important; }
   .brand-lockup { margin-bottom:2px; }
   .nav .brand { white-space:normal; }
 }
+
+
+/* ==========================================
+   MODERN RESEARCH EDITORIAL
+   Visual refinement only — preserves content,
+   layout, typography and existing functionality.
+   ========================================== */
+
+:root {
+  --ink: #1F2A44;
+  --accent: #7895AA;
+  --accent-soft: #EAF0F4;
+  --surface: #FFFFFF;
+  --surface-soft: #F7F9FA;
+  --line: #E5EAF0;
+  --muted: #667085;
+}
+
+/* Overall finish */
+body {
+  background: #FFFFFF !important;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Navigation */
+header {
+  background: rgba(255,255,255,0.88) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 3px 18px rgba(31,42,68,0.035);
+}
+
+nav a {
+  transition: color .2s ease;
+}
+
+nav a:hover {
+  color: var(--accent) !important;
+}
+
+nav a[aria-current="page"] {
+  color: var(--ink) !important;
+  border-bottom: 2px solid var(--accent);
+}
+
+/* Section dividers */
+section + section {
+  border-top: 1px solid var(--line);
+}
+
+section + section::before {
+  background: var(--accent);
+  height: 2px;
+  width: 42px;
+}
+
+/* Portrait */
+.picture {
+  border: 1px solid var(--line) !important;
+  border-radius: 12px !important;
+  background: var(--surface-soft) !important;
+  box-shadow: 0 8px 28px rgba(31,42,68,0.055);
+}
+
+.picture img {
+  border-radius: 11px;
+}
+
+/* Consistent card finish */
+.research-card,
+.scicomm-feature,
+.scicomm-topic,
+#research .project,
+#cv .entry,
+#publications .publication,
+#publications .presentation-entry,
+#outreach .project,
+#insights .blog-card,
+#science-communication .comm-card {
+  border: 1px solid var(--line) !important;
+  border-radius: 10px !important;
+  background: var(--surface) !important;
+  box-shadow: 0 3px 12px rgba(31,42,68,0.035);
+  transition: border-color .2s ease,
+              box-shadow .2s ease,
+              transform .2s ease;
+}
+
+/* Remove prominent coloured left borders */
+#research .project,
+#cv .entry,
+#publications .publication,
+#publications .presentation-entry,
+#outreach .project,
+#insights .blog-card {
+  border-left: 1px solid var(--line) !important;
+}
+
+/* Subtle interaction */
+.research-card:hover,
+.scicomm-topic:hover,
+#research .project:hover,
+#cv .entry:hover,
+#publications .publication:hover,
+#publications .presentation-entry:hover,
+#outreach .project:hover,
+#insights .blog-card:hover,
+#science-communication .comm-card:hover {
+  border-color: #B9C8D4 !important;
+  box-shadow: 0 9px 25px rgba(31,42,68,0.065);
+  transform: translateY(-2px);
+}
+
+/* Science communication feature */
+.scicomm-feature {
+  background: var(--surface-soft) !important;
+}
+
+/* Tags */
+.tag {
+  background: var(--surface-soft) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 6px !important;
+  color: var(--ink) !important;
+  transition: background .2s ease, border-color .2s ease;
+}
+
+.tag:hover {
+  background: var(--accent-soft) !important;
+  border-color: #B9C8D4 !important;
+}
+
+/* Buttons */
+.cv-download,
+.home-action {
+  border-radius: 7px !important;
+  box-shadow: 0 3px 9px rgba(31,42,68,0.08);
+}
+
+.cv-download:hover,
+.home-action-primary:hover {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+/* Footer */
+footer {
+  background: var(--surface-soft) !important;
+  border-top: 1px solid var(--line);
+}
+
+footer a {
+  border-radius: 6px !important;
+  transition: background .2s ease,
+              border-color .2s ease;
+}
+
+footer a:hover {
+  background: var(--accent-soft);
+  border-color: #B9C8D4;
+}
+
+/* Accessible focus */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+
+/* CV section order and consistent subsection spacing */
+#cv .cv-subgroup-label {
+  display:block;
+  margin:18px 0 8px !important;
+  line-height:1.35 !important;
+}
+#cv .cv-software-label { margin-top:22px !important; }
+#cv .ip-entry {
+  align-items:start;
+  row-gap:0;
+}
+#cv .ip-entry-content { min-width:0; }
+#cv .ip-entry .entry-title {
+  margin:0 0 3px !important;
+  line-height:1.38 !important;
+}
+#cv .ip-entry .ip-entry-detail {
+  display:block;
+  margin:0 !important;
+  padding:0;
+  line-height:1.4 !important;
+}
+
 </style>
 </head>
 <body>
@@ -901,31 +1107,33 @@ header .nav nav a { font-size:16px !important; }
   <p class="eyebrow">Curriculum Vitae</p><h2>Background</h2>
   <p class="cv-download-wrap"><button class="cv-download" id="download-cv" type="button">Download CV <span aria-hidden="true">↓</span></button></p>
   <p class="section-intro">Training and experience across psychological medicine, neuroscience, research implementation, and public engagement.</p>
-  <h3>Academic Education</h3>
+  <h3>Education</h3>
   <div class="entry"><div class="entry-meta">2021–2026<br>CGPA 3.83</div><div><div class="entry-title">PhD in Psychological Medicine</div><div class="entry-detail"><strong>Universiti Putra Malaysia (UPM)</strong><br>Thesis: Structural Relations Between Parental Mental Health, Self-Efficacy, Parenting Behaviour, and Early Adolescent Mental Health Among Malay Families in Malaysia.</div></div></div>
   <div class="entry"><div class="entry-meta">2019–2021<br>CGPA 3.75</div><div><div class="entry-title">Master of Neuroscience</div><div class="entry-detail"><strong>Universiti Sains Malaysia (USM)</strong><br>Thesis: EEG Microstate Analysis of Neural Responses to Auditory Stimuli.</div></div></div>
   <div class="entry"><div class="entry-meta">2015–2018<br>CGPA 3.71</div><div><div class="entry-title">BSc (Hons.) Cognitive Sciences</div><div class="entry-detail"><strong>Universiti Malaysia Sarawak (UNIMAS)</strong></div></div></div>
-  <h3 style="margin-top:46px">Experiences</h3>
+  <h3 style="margin-top:46px">Work Experience</h3>
   <div class="entry"><div class="entry-meta">Dec 2025 – Present</div><div><div class="entry-title">Research Assistant · Universiti Putra Malaysia</div><div class="entry-detail">Supported implementation of the DAYA randomized controlled trial, intervention development, study operations, data workflows, ethics applications, and manuscript preparation.</div></div></div>
   <div class="entry"><div class="entry-meta">Jul 2023 – Apr 2024</div><div><div class="entry-title">Project Officer · International Islamic University Malaysia</div><div class="entry-detail">Coordinated a national Psychological First Aid programme for school counsellors; contributed to evaluation, technical reporting, and programme monitoring.</div></div></div>
   <div class="entry"><div class="entry-meta">Oct 2021 – May 2023</div><div><div class="entry-title">Graduate Research Assistant · Universiti Putra Malaysia</div><div class="entry-detail">Co-developed and implemented the Digital-Assisted Parenting Intervention (DaPI), including RCT coordination, recruitment, data collection, and statistical analysis.</div></div></div>
-  <h3 style="margin-top:46px">Methods &amp; Tools</h3>
-  <div class="entry-detail">Methods</div>
-  <div class="tags teaching-tags">
-   <span class="tag">Randomized controlled trials</span><span class="tag">Cross-sectional &amp; longitudinal designs</span><span class="tag">Structural equation modelling</span><span class="tag">Scale adaptation &amp; validation</span><span class="tag">Systematic literature reviews</span><span class="tag">Quantitative data analysis</span>
-  </div>
-  <div class="entry-detail" style="margin-top:18px">Software</div>
-  <div class="tags teaching-tags">
-   <span class="tag">SPSS</span><span class="tag">AMOS</span><span class="tag">Jamovi</span><span class="tag">MATLAB</span><span class="tag">R (developing)</span><span class="tag">Microsoft 365</span><span class="tag">Google Workspace</span>
-  </div>
 
-  <h3 style="margin-top:46px">Teaching Experience</h3>
+
+  <h3 style="margin-top:46px">Teaching Experiences</h3>
   <div class="entry"><div class="entry-meta">Jul 2024–Sep 2025</div><div><div class="entry-title">Teaching Assistant (Freelance)</div><div class="entry-detail">Assisted in developing slides, tutorials, and materials for undergraduate and postgraduate psychology modules.</div></div></div>
   <div class="entry"><div class="entry-meta">Jan 2021–Dec 2023</div><div><div class="entry-title">Academic Tutor (Freelance)</div><div class="entry-detail">Delivered 1-on-1 Master's level tutoring in Cognitive Neuroscience and academic writing.</div></div></div>
 
   <h3 style="margin-top:46px">Teaching Areas</h3>
   <div class="tags teaching-tags">
    <span class="tag">Research methodology</span><span class="tag">Statistics</span><span class="tag">Developmental psychology</span><span class="tag">Health psychology</span><span class="tag">Behavioural science</span><span class="tag">Psychometrics</span><span class="tag">Child &amp; adolescent psychology</span><span class="tag">Cognitive psychology</span><span class="tag">Neuroscience</span><span class="tag">Research ethics</span><span class="tag">Social psychology</span>
+  </div>
+
+  <h3 style="margin-top:46px">Methods &amp; Tools</h3>
+  <div class="entry-detail">Methods</div>
+  <div class="tags teaching-tags">
+   <span class="tag">Randomized controlled trials</span><span class="tag">Cross-sectional &amp; longitudinal designs</span><span class="tag">Structural equation modelling</span><span class="tag">Scale adaptation &amp; validation</span><span class="tag">Systematic literature reviews</span><span class="tag">Quantitative data analysis</span>
+  </div>
+  <div class="entry-detail cv-subgroup-label cv-software-label">Software</div>
+  <div class="tags teaching-tags">
+   <span class="tag">SPSS</span><span class="tag">AMOS</span><span class="tag">Jamovi</span><span class="tag">MATLAB</span><span class="tag">R (developing)</span><span class="tag">Microsoft 365</span><span class="tag">Google Workspace</span>
   </div>
 
   <h3 style="margin-top:46px">Memberships</h3>
@@ -940,7 +1148,7 @@ header .nav nav a { font-size:16px !important; }
   <div class="entry"><div class="entry-meta">2023</div><div class="entry-title">Journal of Cognitive Sciences and Human Development</div></div>
 
   <h3 style="margin-top:46px">Intellectual Property &amp; Grants</h3>
-  <div class="entry"><div class="entry-meta">2023</div><div><div class="entry-title">Digital-Assisted Parenting Intervention (DaPI) Program</div><div class="entry-detail">Copyright / Literary Work · Notification No: CRLY2023W02011</div></div></div>
+  <div class="entry ip-entry"><div class="entry-meta">2023</div><div class="ip-entry-content"><div class="entry-title">Digital-Assisted Parenting Intervention (DaPI) Program</div><div class="entry-detail ip-entry-detail">Copyright / Literary Work · Notification No: CRLY2023W02011</div></div></div>
  </section>
 
  <section id="research">
@@ -1217,14 +1425,37 @@ header .nav nav a { font-size:16px !important; }
     intro.insertAdjacentElement("afterend", content);
 
     const groups = new Map();
+    const categoryAliases = new Map([
+      ["academic education", "Education"],
+      ["education", "Education"],
+      ["research & professional appointments", "Work Experience"],
+      ["research and professional appointments", "Work Experience"],
+      ["experiences", "Work Experience"],
+      ["work experience", "Work Experience"],
+      ["teaching experience", "Teaching Experiences"],
+      ["teaching experiences", "Teaching Experiences"],
+      ["teaching areas", "Teaching Areas"],
+      ["methods & tools", "Methods & Tools"]
+    ]);
     records.forEach(record => {
-      const category = record.category || "Other";
+      const rawCategory = record.category || "Other";
+      const category = categoryAliases.get(String(rawCategory).trim().toLowerCase()) || rawCategory;
       if (!groups.has(category)) groups.set(category, []);
       groups.get(category).push(record);
     });
 
+    const categoryOrder = [
+      "Education", "Work Experience", "Teaching Experiences",
+      "Teaching Areas", "Methods & Tools"
+    ];
+    const orderedGroups = Array.from(groups.entries()).sort((a, b) => {
+      const ai = categoryOrder.indexOf(a[0]);
+      const bi = categoryOrder.indexOf(b[0]);
+      return (ai < 0 ? 100 : ai) - (bi < 0 ? 100 : bi);
+    });
+
     let groupIndex = 0;
-    groups.forEach((items, category) => {
+    orderedGroups.forEach(([category, items]) => {
       const heading = make("h3", "", category);
       heading.style.marginTop = groupIndex === 0 ? "28px" : "46px";
       content.appendChild(heading);
@@ -1234,7 +1465,8 @@ header .nav nav a { font-size:16px !important; }
         ["Method", "Software"].forEach(type => {
           const subset = items.filter(item => item.item_type === type);
           if (!subset.length) return;
-          content.appendChild(make("div", "entry-detail", type === "Method" ? "Methods" : "Software"));
+          const subgroup = make("div", "entry-detail cv-subgroup-label" + (type === "Software" ? " cv-software-label" : ""), type === "Method" ? "Methods" : "Software");
+          content.appendChild(subgroup);
           const tags = make("div", "tags teaching-tags");
           subset.forEach(item => tags.appendChild(make("span", "tag", item.title)));
           content.appendChild(tags);
@@ -1250,15 +1482,16 @@ header .nav nav a { font-size:16px !important; }
       }
 
       items.forEach(item => {
-        const entry = make("div", "entry");
+        const isIntellectualProperty = /intellectual property/i.test(category);
+        const entry = make("div", isIntellectualProperty ? "entry ip-entry" : "entry");
         const meta = make("div", "entry-meta");
         if (item.period) meta.textContent = item.period;
         if (item.value) appendLine(meta, item.value);
-        const detail = make("div");
+        const detail = make("div", isIntellectualProperty ? "ip-entry-content" : "");
         detail.appendChild(make("div", "entry-title", item.title));
 
         if (item.institution || item.description) {
-          const description = make("div", "entry-detail");
+          const description = make("div", isIntellectualProperty ? "entry-detail ip-entry-detail" : "entry-detail");
           if (item.institution) {
             description.appendChild(make("strong", "", item.institution));
           }
@@ -1719,15 +1952,18 @@ header .nav nav a { font-size:16px !important; }
   };
   const headingMap = new Map([
     ["academic education", "Education"], ["education", "Education"],
+    ["research & professional appointments", "Work Experience"],
+    ["research and professional appointments", "Work Experience"],
     ["experiences", "Work Experience"], ["work experience", "Work Experience"],
-    ["teaching experience", "Teaching Experience"],
+    ["teaching experience", "Teaching Experiences"],
+    ["teaching experiences", "Teaching Experiences"],
     ["research experience & projects", "Research Projects"],
     ["research projects", "Research Projects"],
     ["peer-reviewed publications", "Publications"], ["publications", "Publications"],
     ["conference presentations", "Conference Presentations and Proceedings"],
     ["presentations", "Conference Presentations and Proceedings"],
-    ["methods & tools", "Research and Technical Skills"],
-    ["research and technical skills", "Research and Technical Skills"],
+    ["methods & tools", "Methods & Tools"],
+    ["research and technical skills", "Methods & Tools"],
     ["teaching areas", "Teaching Areas"],
     ["intellectual property & grants", "Intellectual Property"],
     ["intellectual property", "Intellectual Property"],
@@ -1868,6 +2104,11 @@ header .nav nav a { font-size:16px !important; }
       .cv-section-content > *:last-child { margin-bottom:0; }
       .cv-section-content .entry, .cv-section-content .publication, .cv-section-content .project,
       .cv-section-content .presentation-entry, .cv-section-content article { padding:0 0 7px; margin:0 0 7px; border:0; border-bottom:1px solid #eceef0; box-shadow:none; break-inside:avoid; }
+      .cv-section-content .cv-subgroup-label { margin:9px 0 3px !important; line-height:1.35 !important; }
+      .cv-section-content .cv-software-label { margin-top:12px !important; }
+      .cv-section-content .ip-entry { padding-bottom:7px; margin-bottom:7px; }
+      .cv-section-content .ip-entry .entry-title { margin:0 0 2px !important; }
+      .cv-section-content .ip-entry .ip-entry-detail { margin:0 !important; padding:0; line-height:1.42 !important; }
       .cv-section-content h3, .cv-section-content .entry-title, .cv-section-content .presentation-title { margin:0 0 2px; font:700 12px/1.4 Inter,Arial,sans-serif; color:#111; }
       .cv-section-content h4 { margin:5px 0 2px; font:700 12px/1.35 Inter,Arial,sans-serif; }
       .cv-section-content p, .cv-section-content li, .cv-section-content .entry-detail,
