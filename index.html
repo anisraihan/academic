@@ -1466,8 +1466,13 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
     .sort((a, b) => (Number(a.display_order) || 0) - (Number(b.display_order) || 0));
 
   const appendLine = (parent, text) => {
-    if (!text) return;
-    parent.appendChild(document.createElement("br"));
+    if (text === undefined || text === null || String(text) === "") return;
+    // Add a line break only when there is already content in the container.
+    // This prevents an empty first line when optional fields (e.g. institution)
+    // are absent from a Google Sheets record.
+    if (parent.hasChildNodes()) {
+      parent.appendChild(document.createElement("br"));
+    }
     parent.appendChild(document.createTextNode(String(text)));
   };
 
