@@ -1368,120 +1368,69 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
 }
 
 
-/* Database-driven SciComm article reader */
-#science-communication .comm-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+/* Outreach typography: align with Publications while retaining the current card layout. */
+#outreach .outreach-title,
+#outreach .project-head h3 {
+  font-family: "Noto Serif", Georgia, serif !important;
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  line-height: 1.34 !important;
+  letter-spacing: -0.02em !important;
 }
-.scicomm-article-content {
-  width: min(100%, 820px);
-  margin: 0 auto;
-  padding: clamp(24px, 5vw, 56px);
-  background: #fff;
-  color: #1F2A44;
-  font-family: Inter, Arial, sans-serif;
-}
-.scicomm-article-content p {
-  margin: 0 0 18px;
-  color: #344054 !important;
-  font: 16px/1.75 Inter, Arial, sans-serif !important;
-}
-.scicomm-article-content .scicomm-article-subtitle {
-  margin-bottom: 28px;
-  color: #667085 !important;
-  font-size: 18px !important;
-  line-height: 1.6 !important;
-}
-.scicomm-article-content .scicomm-article-heading {
-  margin: 34px 0 12px;
-  color: #1F2A44 !important;
-  font: 700 21px/1.4 "Noto Serif", Georgia, serif !important;
-  letter-spacing: -.015em;
-}
-.scicomm-article-content .scicomm-article-introduction {
-  color: #344054 !important;
+#outreach .outreach-organisation,
+#outreach .outreach-description,
+#outreach .project > p {
+  font-family: Inter, Arial, sans-serif !important;
   font-size: 17px !important;
+  line-height: 1.5 !important;
 }
-.scicomm-article-content .scicomm-article-callout {
-  margin: 26px 0;
-  padding: 20px 22px;
-  border-left: 3px solid #9CB9C9;
-  border-radius: 0 6px 6px 0;
-  background: #F5F7F8;
+#outreach .outreach-organisation {
+  font-weight: 600 !important;
+  color: #303B46 !important;
 }
-.scicomm-article-content .scicomm-article-callout h4 {
-  margin: 0 0 8px;
-  color: #1F2A44 !important;
-  font: 700 18px/1.4 "Noto Serif", Georgia, serif !important;
+#outreach .outreach-description,
+#outreach .project > p {
+  color: #596575 !important;
 }
-.scicomm-article-content .scicomm-article-callout p {
-  margin: 0;
+#outreach .outreach-location {
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.4 !important;
 }
-.scicomm-article-content .scicomm-article-label {
-  margin-bottom: 8px;
-  color: #7895AA;
-  font: 700 11px/1.4 Inter, Arial, sans-serif;
-  letter-spacing: .1em;
-  text-transform: uppercase;
+#outreach .outreach-period,
+#outreach .outreach-role,
+#outreach .project-status {
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 13px !important;
+  line-height: 1.35 !important;
 }
-.scicomm-article-content .scicomm-article-figure {
-  margin: 28px 0;
+#outreach .outreach-details {
+  gap: 6px !important;
+  margin-top: 7px !important;
 }
-.scicomm-article-content .scicomm-article-figure img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
-.scicomm-article-content .scicomm-article-figure figcaption {
-  margin-top: 8px;
-  color: #667085;
-  font: 13px/1.5 Inter, Arial, sans-serif;
-}
-.scicomm-article-content .scicomm-article-references {
-  margin-top: 38px;
-  padding-top: 18px;
-  border-top: 1px solid #E3E7EC;
-}
-.scicomm-article-content .scicomm-reference-list {
-  margin: 0;
-  padding-left: 22px;
-}
-.scicomm-article-content .scicomm-reference-list li {
-  margin: 0 0 9px;
-  color: #667085 !important;
-  font: 13px/1.55 Inter, Arial, sans-serif !important;
-}
-.scicomm-article-content .scicomm-article-text {
-  white-space: pre-line;
-}
-#science-communication .comm-secondary-link {
-  display: inline-block;
-  margin: 10px 0 0 14px;
-  color: #667085 !important;
-  font: 600 12px/1.4 Inter, Arial, sans-serif;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.scicomm-viewer-frame-wrap:has(.scicomm-article-content) {
-  background: #fff;
-}
-.scicomm-viewer-frame-wrap:has(.scicomm-article-content) .scicomm-article-content {
-  min-height: 100%;
+#outreach .outreach-details p {
+  margin: 0 !important;
 }
 @media (max-width: 700px) {
-  #science-communication .comm-grid {
-    grid-template-columns: 1fr;
+  #outreach .outreach-title,
+  #outreach .project-head h3 {
+    font-size: 17px !important;
+    line-height: 1.35 !important;
   }
-  .scicomm-article-content {
-    padding: 22px 18px 32px;
+  #outreach .outreach-organisation,
+  #outreach .outreach-description,
+  #outreach .project > p {
+    font-size: 16px !important;
+    line-height: 1.48 !important;
   }
-  .scicomm-article-content .scicomm-article-heading {
-    margin-top: 27px;
-    font-size: 19px !important;
+  #outreach .outreach-location {
+    font-size: 14px !important;
   }
-  .scicomm-article-content p {
-    font-size: 15px !important;
-    line-height: 1.7 !important;
+  #outreach .outreach-period,
+  #outreach .outreach-role,
+  #outreach .project-status {
+    font-size: 12px !important;
   }
 }
 
@@ -1544,8 +1493,8 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
   <p class="section-intro">Training and experience across psychological medicine, neuroscience, research implementation, and public engagement.</p>
   <h3>Education</h3>
   <div class="entry"><div class="entry-meta">2021 – 2026<br>CGPA 3.83</div><div><div class="entry-title">PhD in Psychological Medicine</div><div class="entry-detail"><strong>Universiti Putra Malaysia (UPM)</strong><br>Thesis: Structural Relations Between Parental Mental Health, Self-Efficacy, Parenting Behaviour, and Early Adolescent Mental Health Among Malay Families in Malaysia.</div></div></div>
-  <div class="entry"><div class="entry-meta">2019 – 2021<br>CGPA 3.75</div><div><div class="entry-title">Master of Neuroscience</div><div class="entry-detail"><strong>Universiti Sains Malaysia (USM)</strong><br>Thesis: Brain Behavioural State from EEG Microstates Analysis: Exploring the Impacts of Quranic and Non-Quranic Rhythmic Recitations.</div></div></div>
-  <div class="entry"><div class="entry-meta">2015 – 2018<br>CGPA 3.71</div><div><div class="entry-title">BSc (Hons.) Cognitive Sciences</div><div class="entry-detail"><strong>Universiti Malaysia Sarawak (UNIMAS)</strong><br>Thesis: Experiences of Special Education Teachers in Teaching Adolescents with Intellectual Disability About Sexuality Education.</div></div></div>
+  <div class="entry"><div class="entry-meta">2019 – 2021<br>CGPA 3.75</div><div><div class="entry-title">Master of Neuroscience</div><div class="entry-detail"><strong>Universiti Sains Malaysia (USM)</strong><br>Thesis: EEG Microstate Analysis of Neural Responses to Auditory Stimuli.</div></div></div>
+  <div class="entry"><div class="entry-meta">2015 – 2018<br>CGPA 3.71</div><div><div class="entry-title">BSc (Hons.) Cognitive Sciences</div><div class="entry-detail"><strong>Universiti Malaysia Sarawak (UNIMAS)</strong></div></div></div>
   <h3 style="margin-top:46px">Experiences</h3>
   <div class="entry"><div class="entry-meta">Dec 2025 – Present</div><div><div class="entry-title">Research Assistant · Universiti Putra Malaysia</div><div class="entry-detail">Supported implementation of the DAYA randomized controlled trial, intervention development, study operations, data workflows, ethics applications, and manuscript preparation.</div></div></div>
   <div class="entry"><div class="entry-meta">Jul 2023 – Apr 2024</div><div><div class="entry-title">Project Officer · International Islamic University Malaysia</div><div class="entry-detail">Coordinated a national Psychological First Aid programme for school counsellors; contributed to evaluation, technical reporting, and programme monitoring.</div></div></div>
@@ -1814,7 +1763,7 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
 
   const API_URL = "https://script.google.com/macros/s/AKfycbyKGxZIEtaYnUT_tTjV0nBEBEJKrXfsbkfaHip2lnPxgNgnXGRyRd1ND-yfLt3NSAOfgA/exec";
   const CALLBACK_NAME = "receiveAcademicDatabase";
-  const REQUIRED_SHEETS = ["cv", "research", "publications", "scicomm", "scicomm_content", "outreach"];
+  const REQUIRED_SHEETS = ["cv", "research", "publications", "scicomm", "outreach"];
 
   const make = (tag, className, text) => {
     const node = document.createElement(tag);
@@ -2051,7 +2000,7 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
     if (presentationList.childElementCount) journalWrap.insertAdjacentElement("afterend", presentationWrap);
   }
 
-  function renderSciComm(records, contentBlocks) {
+  function renderSciComm(records) {
     const section = document.getElementById("science-communication");
     const intro = section.querySelector(".section-intro");
     if (!intro) throw new Error("SciComm introduction not found.");
@@ -2069,100 +2018,7 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
       }
     };
 
-    const blocksForItem = (item) => {
-      const itemId = String(item.id || "").trim();
-      return contentBlocks
-        .filter(block => String(block.item_id || "").trim() === itemId)
-        .sort((a, b) => (Number(a.section_order) || 0) - (Number(b.section_order) || 0));
-    };
-
-    const blockText = (block) => {
-      const fields = ["content", "block_content", "body", "text", "description", "value", "reference_text"];
-      for (const field of fields) {
-        if (block[field] !== undefined && block[field] !== null && String(block[field]).trim()) {
-          return String(block[field]).trim();
-        }
-      }
-      return "";
-    };
-
-    const appendTextParagraphs = (parent, value, className) => {
-      String(value).split(/\n{2,}/).map(part => part.trim()).filter(Boolean).forEach(part => {
-        parent.appendChild(make("p", className || "", part));
-      });
-    };
-
-    const renderArticleBlocks = (item, blocks) => {
-      const article = make("article", "scicomm-article-content");
-      if (item.subtitle) article.appendChild(make("p", "scicomm-article-subtitle", item.subtitle));
-
-      blocks.forEach(block => {
-        const type = String(block.block_type || "text").trim().toLowerCase().replace(/[_-]+/g, " ");
-        const heading = String(block.heading || "").trim();
-        const content = blockText(block);
-
-        if (type === "image" || type === "figure") {
-          const imageUrl = safeHttpsUrl(block.image_url || block.url || content);
-          if (imageUrl) {
-            const figure = make("figure", "scicomm-article-figure");
-            const image = make("img", "", "");
-            image.src = imageUrl;
-            image.alt = String(block.alt_text || heading || item.title || "SciComm article image");
-            image.loading = "lazy";
-            figure.appendChild(image);
-            if (heading) figure.appendChild(make("figcaption", "", heading));
-            article.appendChild(figure);
-          }
-          return;
-        }
-
-        if (type === "heading" || type === "subheading" || type === "section heading") {
-          if (heading || content) article.appendChild(make("h4", "scicomm-article-heading", heading || content));
-          return;
-        }
-
-        if (type === "key finding" || type === "finding" || type === "highlight") {
-          const callout = make("aside", "scicomm-article-callout scicomm-key-finding");
-          if (heading) callout.appendChild(make("h4", "", heading));
-          appendTextParagraphs(callout, content);
-          if (callout.childNodes.length) article.appendChild(callout);
-          return;
-        }
-
-        if (type === "takeaway" || type === "take home message" || type === "take-home message" || type === "why it matters") {
-          const callout = make("aside", "scicomm-article-callout scicomm-takeaway");
-          callout.appendChild(make("div", "scicomm-article-label", heading || (type === "why it matters" ? "Why it matters" : "Take-home message")));
-          appendTextParagraphs(callout, content);
-          if (callout.childNodes.length) article.appendChild(callout);
-          return;
-        }
-
-        if (type === "references" || type === "reference") {
-          const wrap = make("section", "scicomm-article-references");
-          wrap.appendChild(make("h4", "scicomm-article-heading", heading || "References"));
-          const entries = content.split(/\n+/).map(line => line.trim()).filter(Boolean);
-          if (entries.length) {
-            const list = make("ol", "scicomm-reference-list");
-            entries.forEach(entry => list.appendChild(make("li", "", entry)));
-            wrap.appendChild(list);
-          }
-          article.appendChild(wrap);
-          return;
-        }
-
-        if (heading) article.appendChild(make("h4", "scicomm-article-heading", heading));
-        if (content) {
-          const paragraphClass = type === "introduction" || type === "intro" || type === "lead"
-            ? "scicomm-article-introduction"
-            : "scicomm-article-text";
-          appendTextParagraphs(article, content, paragraphClass);
-        }
-      });
-
-      return article;
-    };
-
-    // One reusable accessible viewer handles both database-built articles and Canva embeds.
+    // One reusable viewer. The iframe is created only after a reader opens an item.
     let viewer = document.getElementById("scicomm-viewer");
     if (!viewer) {
       viewer = make("div", "scicomm-viewer");
@@ -2211,22 +2067,11 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
     const viewerMeta = viewer.querySelector(".scicomm-viewer-heading p");
     const frameWrap = viewer.querySelector("#scicomm-viewer-frame-wrap");
 
-    const openViewer = (trigger, item, contentNode, metaText) => {
-      viewerTitle.textContent = item.title || "Science communication";
-      viewerMeta.textContent = metaText;
-      frameWrap.replaceChildren(contentNode);
-      viewer.returnFocusTo = trigger;
-      viewer.hidden = false;
-      document.body.classList.add("scicomm-viewer-open");
-      viewer.querySelector(".scicomm-viewer-close").focus();
-    };
-
     if (!records.length) {
       grid.appendChild(make("p", "scicomm-empty-state", "New science communication materials will appear here as they are published."));
     }
 
     records.forEach((item, index) => {
-      const itemBlocks = blocksForItem(item);
       const card = make("article", "comm-card");
       const itemAnchor = "scicomm-item-" + String(item.id || (index + 1))
         .trim().replace(/[^A-Za-z0-9_-]+/g, "-");
@@ -2245,7 +2090,7 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
       }
 
       const body = make("div", "comm-card-body");
-      const kindText = [item.format_category, item.content_type, item.publication_date, item.reading_time]
+      const kindText = [item.content_type, item.publication_date, item.reading_time]
         .filter(Boolean).join(" · ");
       body.appendChild(make("div", "kind", kindText));
       body.appendChild(make("h3", "", item.title || "Untitled"));
@@ -2254,40 +2099,27 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
       const embedUrl = safeCanvaEmbedUrl(item.embed_url);
       const articleUrl = safeHttpsUrl(item.article_url);
 
-      if (itemBlocks.length) {
-        const open = make("button", "comm-open", "Read article ↗");
-        open.type = "button";
-        open.addEventListener("click", () => {
-          const metaText = [item.format_category, item.content_type, item.publication_date]
-            .filter(Boolean).join(" · ");
-          openViewer(open, item, renderArticleBlocks(item, itemBlocks), metaText);
-        });
-        body.appendChild(open);
-
-        if (embedUrl) {
-          const canva = make("a", "comm-secondary-link", "View Canva edition ↗");
-          canva.href = embedUrl;
-          canva.target = "_blank";
-          canva.rel = "noopener noreferrer";
-          body.appendChild(canva);
-        } else if (articleUrl) {
-          const external = make("a", "comm-secondary-link", "Open external version ↗");
-          external.href = articleUrl;
-          external.target = "_blank";
-          external.rel = "noopener noreferrer";
-          body.appendChild(external);
-        }
-      } else if (embedUrl) {
+      if (embedUrl) {
         const open = make("button", "comm-open", "View editorial ↗");
         open.type = "button";
         open.addEventListener("click", () => {
+          viewerTitle.textContent = item.title || "Science communication";
+          viewerMeta.textContent = [item.content_type, item.publication_date].filter(Boolean).join(" · ");
+          frameWrap.replaceChildren();
+
           const frame = make("iframe", "scicomm-viewer-frame");
           frame.src = embedUrl;
           frame.title = item.title || "Embedded Canva editorial";
           frame.loading = "eager";
           frame.referrerPolicy = "strict-origin-when-cross-origin";
+          // Sandbox prevents the embedded design from opening pop-ups or navigating the parent website.
           frame.setAttribute("sandbox", "allow-scripts allow-same-origin allow-forms");
-          openViewer(open, item, frame, [item.content_type, item.publication_date].filter(Boolean).join(" · "));
+          frameWrap.appendChild(frame);
+
+          viewer.returnFocusTo = open;
+          viewer.hidden = false;
+          document.body.classList.add("scicomm-viewer-open");
+          viewer.querySelector(".scicomm-viewer-close").focus();
         });
         body.appendChild(open);
       } else if (articleUrl) {
@@ -2302,7 +2134,6 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
         open.disabled = true;
         body.appendChild(open);
       }
-
       card.appendChild(body);
       grid.appendChild(card);
     });
@@ -2404,7 +2235,7 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
     renderCV(records.cv);
     renderResearch(records.research);
     renderPublications(records.publications);
-    renderSciComm(records.scicomm, records.scicomm_content);
+    renderSciComm(records.scicomm);
     renderHomeSciCommLinks(records.scicomm);
     renderOutreach(records.outreach);
     document.documentElement.dataset.academicDatabase = "connected";
