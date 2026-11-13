@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&family=Noto+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
- --paper:#ffffff;--ink:#080808;--ink:#30343a;--blue:#080808;--line:#d0d5dc;
+ --paper:#ffffff;--ink:#080808;--muted:#30343a;--blue:#080808;--line:#d0d5dc;
  --pale:#f8f9fa;--accent:#080808;--max:1120px;
 }
 *{box-sizing:border-box}
@@ -60,19 +60,19 @@ p{margin:0 0 18px}
 .scicomm-empty-state{margin:0;padding:18px 0;color:#667085;font-family:Inter,Arial,sans-serif;font-size:15px;line-height:1.5}
 #science-communication .scicomm-empty-state{grid-column:1/-1}
 .scicomm-topic{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:6px;padding:12px 14px;background:#fff;font-family:"Libre Baskerville",Georgia,serif;font-size:11px;font-weight:700}
-.section-intro{max-width:720px;color:var(--ink);margin-bottom:32px}
+.section-intro{max-width:720px;color:var(--muted);margin-bottom:32px}
 .entry{display:grid;grid-template-columns:220px 1fr;gap:30px;padding:26px 0;border-top:1px solid var(--line)}
 .entry:first-of-type{border-top:0}
-.entry-meta{font-size:12px;color:var(--ink)}
+.entry-meta{font-size:12px;color:var(--muted)}
 .entry-title{font-weight:700;font-size:16px;margin-bottom:4px}
-.entry-detail{font-size:14px;color:var(--ink)}
+.entry-detail{font-size:14px;color:var(--muted)}
 .tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.tag{font-size:17px;border:1px solid var(--line);padding:5px 11px;color:var(--ink);border-radius:999px;background:#fff;font-size:20px}.teaching-tags{margin-top:14px}
+.tag{font-size:17px;border:1px solid var(--line);padding:5px 11px;color:var(--muted);border-radius:999px;background:#fff;font-size:20px}.teaching-tags{margin-top:14px}
 .project{padding:30px 0;border-top:1px solid var(--line)}
 .project:first-of-type{border-top:0}
 .project-head{display:flex;justify-content:space-between;gap:20px;align-items:start}
 .project-status{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;white-space:nowrap}
-.project p{color:var(--ink);max-width:850px}
+.project p{color:var(--muted);max-width:850px}
 .publication{padding:25px 0;border-top:1px solid var(--line)}
 .publication:first-of-type{border-top:0}
 .publication h3{font-size:21px}
@@ -1973,6 +1973,58 @@ a:focus-visible, button:focus-visible {
   margin-top: 20px !important;
 }
 
+
+/* =========================================================
+   OUTREACH TYPOGRAPHY — authoritative sizing
+   Match the 17px sans-serif body scale used in Publications.
+   Covers static project cards and API-rendered outreach cards.
+   ========================================================= */
+#outreach .project > p,
+#outreach .project > p *,
+#outreach .outreach-card,
+#outreach .outreach-card p,
+#outreach .outreach-details,
+#outreach .outreach-details p,
+#outreach .outreach-organisation,
+#outreach .outreach-description {
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 17px !important;
+  line-height: 1.5 !important;
+  font-weight: 400;
+}
+#outreach .outreach-organisation,
+#outreach .project > p strong,
+#outreach .outreach-details strong {
+  font-weight: 600 !important;
+}
+#outreach .project-status,
+#outreach .outreach-period,
+#outreach .outreach-role,
+#outreach .outreach-location {
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+}
+@media (max-width: 700px) {
+  #outreach .project > p,
+  #outreach .project > p *,
+  #outreach .outreach-card,
+  #outreach .outreach-card p,
+  #outreach .outreach-details,
+  #outreach .outreach-details p,
+  #outreach .outreach-organisation,
+  #outreach .outreach-description {
+    font-size: 17px !important;
+    line-height: 1.48 !important;
+  }
+  #outreach .project-status,
+  #outreach .outreach-period,
+  #outreach .outreach-role,
+  #outreach .outreach-location {
+    font-size: 13px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3125,24 +3177,6 @@ a:focus-visible, button:focus-visible {
     const doc = printWindow.document;
     doc.open();
     doc.write('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Anis Raihan Dzeidee Schaff - Academic CV</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>' + styles + '
-/* Outreach body typography: match the 17px body copy used in Publications. */
-#outreach .outreach-organisation,
-#outreach .outreach-description,
-#outreach .project > p:not(.project-meta),
-#outreach .outreach-details p {
-  font-family: Inter, Arial, sans-serif !important;
-  font-size: 17px !important;
-  line-height: 1.58 !important;
-}
-@media (max-width: 700px) {
-  #outreach .outreach-organisation,
-  #outreach .outreach-description,
-  #outreach .project > p:not(.project-meta),
-  #outreach .outreach-details p {
-    font-size: 17px !important;
-    line-height: 1.5 !important;
-  }
-}
 
 </style></head><body></body></html>');
     doc.close();
