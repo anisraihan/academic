@@ -1434,6 +1434,545 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
   }
 }
 
+
+/* Requested Outreach and Research refinements */
+#outreach > h2 {
+  font-size: calc(clamp(26px, 3.5vw, 37px) + 1px) !important;
+}
+#outreach > .section-intro {
+  max-width: none !important;
+  width: 100%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  text-align: left !important;
+}
+#outreach .outreach-organisation,
+#outreach .outreach-description,
+#outreach .project > p:not(.project-meta) {
+  font-size: 18px !important;
+}
+#outreach .outreach-location {
+  font-size: 16px !important;
+}
+@media (max-width: 700px) {
+  #outreach .outreach-organisation,
+  #outreach .outreach-description,
+  #outreach .project > p:not(.project-meta) {
+    font-size: 17px !important;
+  }
+  #outreach .outreach-location { font-size: 15px !important; }
+}
+
+/* Research project headings: number and title share identical typography. */
+#research .project-head h3,
+#research .project-number {
+  font-family: "Noto Serif", Georgia, serif !important;
+  font-size: 19.5px !important;
+  font-weight: 700 !important;
+  line-height: 1.28 !important;
+}
+#research .project-number {
+  display: inline !important;
+  margin-right: 8px !important;
+  color: var(--accent) !important;
+}
+#research .project-meta {
+  margin-top: 8px !important;
+  line-height: calc(1.6em - 1px) !important;
+}
+#research .project-meta em { font-style: italic !important; }
+#research .project h4 {
+  font-size: calc(1rem + 1px) !important;
+  line-height: 1.25 !important;
+}
+#research .project h4 + p {
+  line-height: calc(1.6em - 1px) !important;
+}
+
+
+/* Latest refinement: slightly narrower site canvas and Outreach card rhythm. */
+:root {
+  --max: 1060px;
+}
+
+/* Outreach institution and description: 1px and 2px smaller respectively. */
+#outreach .outreach-organisation,
+#outreach .project > p:first-of-type {
+  font-size: 17px !important;
+  line-height: 1.45 !important;
+}
+#outreach .outreach-description,
+#outreach .project > p:not(:first-of-type) {
+  font-size: 16px !important;
+  line-height: 1.45 !important;
+}
+
+/* Give each Outreach item a little more breathing room. */
+#outreach .project,
+#outreach .outreach-card {
+  padding: 22px 24px !important;
+}
+
+/* Keep descriptive copy within the text column, clear of the year/status column. */
+#outreach .project > p:not(:first-of-type) {
+  max-width: calc(100% - 170px) !important;
+}
+#outreach .outreach-description {
+  max-width: calc(100% - 170px) !important;
+}
+
+@media (max-width: 700px) {
+  #outreach .project,
+  #outreach .outreach-card {
+    padding: 18px 19px !important;
+  }
+  #outreach .project > p:not(:first-of-type),
+  #outreach .outreach-description {
+    max-width: 100% !important;
+  }
+}
+
+
+
+/* =========================================================
+   CLEAN EDITORIAL REDESIGN
+   Visual system only: preserves copy, data hooks, API logic,
+   interactions, and all existing font-size declarations.
+   ========================================================= */
+:root {
+  --ink: #202b3c;
+  --muted: #687586;
+  --accent: #66849a;
+  --accent-soft: #edf2f5;
+  --line: #e4e9ee;
+  --surface: #ffffff;
+  --surface-soft: #f8fafb;
+  --max: 1080px;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: #fff !important;
+  color: var(--ink) !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body, p, li, .entry-detail, .entry-meta, .section-intro,
+.project-meta, .citation, .outreach-description {
+  line-height: 1.58;
+}
+a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--accent) !important; }
+
+/* A quieter, more deliberate navigation bar */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255,255,255,.94) !important;
+  border-bottom: 1px solid var(--line) !important;
+  box-shadow: 0 4px 18px rgba(32,43,60,.035) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.nav {
+  max-width: var(--max);
+  min-height: 76px;
+  padding: 15px 30px !important;
+  gap: 30px;
+}
+.nav .brand { color: var(--ink) !important; }
+.brand-subtitle { color: var(--muted) !important; }
+header nav { gap: clamp(12px, 2vw, 23px); }
+header nav a {
+  position: relative;
+  padding: 7px 0;
+  color: #596678 !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+}
+header nav a::after {
+  content: "";
+  position: absolute;
+  right: 0 !important;
+  bottom: 1px;
+  left: 0;
+  height: 2px;
+  background: var(--accent) !important;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .2s ease;
+}
+header nav a:hover::after,
+header nav a[aria-current="page"]::after { transform: scaleX(1); }
+header nav a[aria-current="page"] { color: var(--ink) !important; }
+
+/* Content width and section rhythm */
+main { max-width: var(--max); padding: 0 30px; }
+section {
+  padding: 78px 0 84px;
+  scroll-margin-top: 90px;
+  min-height: auto;
+}
+section + section {
+  border-top: 1px solid var(--line) !important;
+}
+section + section::before {
+  width: 46px !important;
+  height: 2px !important;
+  background: var(--accent) !important;
+}
+.eyebrow {
+  color: var(--accent) !important;
+  letter-spacing: .14em;
+  margin-bottom: 15px;
+}
+h1, h2, h3, h4,
+.serif, .serif-heading {
+  color: var(--ink) !important;
+  text-wrap: pretty;
+}
+h1, h2 { letter-spacing: -.025em !important; }
+h2 { margin-bottom: 22px; }
+.section-intro {
+  max-width: 720px;
+  color: var(--muted) !important;
+  margin-bottom: 34px;
+}
+#cv > h3, #research h4 {
+  color: var(--ink) !important;
+}
+
+/* Homepage: cleaner split layout and stronger hierarchy */
+.hero {
+  grid-template-columns: minmax(0, 1.35fr) minmax(250px, .78fr);
+  gap: clamp(36px, 6vw, 76px);
+  min-height: 610px;
+  align-items: center;
+}
+.hero-copy { padding: 30px 0; }
+.hero .lead { color: #465568 !important; }
+.role {
+  color: var(--accent-dark, #58768c) !important;
+  letter-spacing: .015em;
+}
+.hero-note { color: var(--muted) !important; }
+.picture {
+  border: 1px solid var(--line) !important;
+  border-radius: 12px !important;
+  background: var(--surface-soft) !important;
+  box-shadow: 0 12px 32px rgba(32,43,60,.07) !important;
+}
+.picture img { border-radius: 11px; }
+.home-action, .cv-download {
+  box-shadow: none !important;
+  border-radius: 6px !important;
+}
+.home-action-primary, .cv-download {
+  background: var(--ink) !important;
+  border-color: var(--ink) !important;
+}
+.home-action-primary:hover, .cv-download:hover {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+.home-action-secondary {
+  border-color: #cbd5dd !important;
+}
+.home-action-secondary:hover { background: var(--surface-soft) !important; }
+
+/* Shared card language: restrained borders, no heavy shadows */
+.research-card,
+.scicomm-feature,
+.scicomm-topic,
+#research .project,
+#publications .publication,
+#publications .presentation-entry,
+#outreach .project,
+#outreach .outreach-card,
+#insights .blog-card,
+#science-communication .comm-card {
+  border: 1px solid var(--line) !important;
+  border-radius: 9px !important;
+  background: var(--surface) !important;
+  box-shadow: 0 2px 10px rgba(32,43,60,.035) !important;
+}
+.research-card,
+#research .project,
+#publications .publication,
+#publications .presentation-entry,
+#outreach .project,
+#outreach .outreach-card,
+#insights .blog-card,
+#science-communication .comm-card {
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.research-card:hover,
+#research .project:hover,
+#publications .publication:hover,
+#publications .presentation-entry:hover,
+#outreach .project:hover,
+#outreach .outreach-card:hover,
+#insights .blog-card:hover,
+#science-communication .comm-card:hover {
+  transform: none !important;
+  border-color: #c4d1da !important;
+  box-shadow: 0 5px 17px rgba(32,43,60,.06) !important;
+}
+.research-card { padding: 25px 26px !important; }
+.research-card .number {
+  color: var(--accent) !important;
+  letter-spacing: .1em;
+}
+.research-card h3 { margin-bottom: 10px !important; }
+.research-card p { color: var(--muted) !important; }
+.research-heading {
+  border-top-color: var(--line) !important;
+  padding-top: 25px;
+}
+.research-heading h2 { color: var(--ink) !important; }
+.all-research, .scicomm-link, .pub-link, .blog-read-more {
+  color: var(--accent-dark, #58768c) !important;
+  font-weight: 600;
+}
+
+/* CV: aligned date/content columns and quiet dividers */
+#cv .entry {
+  display: grid;
+  grid-template-columns: minmax(145px, 190px) minmax(0, 1fr);
+  gap: 26px;
+  padding: 20px 0 !important;
+  border-top: 1px solid var(--line) !important;
+}
+#cv .entry-meta { color: var(--muted) !important; }
+#cv .entry-title { color: var(--ink) !important; }
+#cv .entry-detail { color: #596678 !important; }
+#cv .entry-detail strong { color: var(--ink) !important; }
+#cv .tags { gap: 8px; }
+#cv .tag {
+  border: 1px solid #e1e7ec !important;
+  border-radius: 5px !important;
+  background: var(--surface-soft) !important;
+  color: #4d5a6a !important;
+  padding: 5px 10px;
+}
+#cv .tag:hover {
+  background: var(--accent-soft) !important;
+  border-color: #cbd7df !important;
+}
+
+/* Research projects */
+#research .project {
+  margin: 16px 0 !important;
+  padding: 25px 27px !important;
+  border-left: 1px solid var(--line) !important;
+}
+#research .project-head { gap: 16px; }
+#research .project h3 { margin-bottom: 4px; }
+#research .project-number { color: var(--accent) !important; }
+#research .project-status {
+  color: var(--accent-dark, #58768c) !important;
+  letter-spacing: .07em;
+}
+#research .project-meta { color: var(--muted) !important; }
+#research .project h4 { color: #465568 !important; }
+#research .project p { color: #566273 !important; }
+.tag {
+  border-color: var(--line) !important;
+  border-radius: 5px !important;
+  background: var(--surface-soft) !important;
+}
+
+/* Publications and presentations */
+#publications .publication,
+#publications .presentation-entry {
+  margin: 14px 0 !important;
+  padding: 22px 25px !important;
+  border-left: 1px solid var(--line) !important;
+}
+#publications .publication h3,
+#publications .presentation-title { color: var(--ink) !important; }
+#publications .citation,
+#publications .presentation-location,
+#publications .presentation-conference { color: var(--muted) !important; }
+#publications .presentation-date { color: var(--accent-dark, #58768c) !important; }
+
+/* Outreach cards: predictable spacing and readable text width */
+#outreach .project,
+#outreach .outreach-card {
+  margin: 0 0 12px !important;
+  padding: 19px 22px !important;
+  border-left: 1px solid var(--line) !important;
+}
+#outreach .project-head { align-items: flex-start; gap: 8px 18px; }
+#outreach .project-head h3,
+#outreach .outreach-title { color: var(--ink) !important; }
+#outreach .project-status { color: var(--accent-dark, #58768c) !important; }
+#outreach .project > p,
+#outreach .outreach-description { color: #596678 !important; max-width: 880px; }
+#outreach .project > p strong,
+#outreach .outreach-organisation { color: #3d4b5c !important; }
+
+/* Science communication and insights */
+.scicomm-feature {
+  background: var(--surface-soft) !important;
+  padding: 25px !important;
+}
+.scicomm .statement { color: var(--ink) !important; }
+.scicomm-feature p:not(.eyebrow) { color: var(--muted) !important; }
+.scicomm-topic {
+  border-radius: 7px !important;
+  padding: 16px 18px !important;
+  color: var(--ink) !important;
+}
+#science-communication .comm-card {
+  overflow: hidden;
+  border-radius: 9px !important;
+}
+#science-communication .comm-card-body { padding: 22px 23px 24px; }
+#science-communication .comm-card .kind { color: var(--accent-dark, #58768c) !important; }
+#science-communication .comm-card h3 { color: var(--ink) !important; }
+#science-communication .comm-card p { color: var(--muted) !important; }
+#science-communication .comm-open { color: var(--ink) !important; }
+#insights .blog-card { padding: 25px !important; }
+#insights .blog-date { color: var(--muted) !important; }
+#insights .blog-card h3 { color: var(--ink) !important; }
+#insights .blog-card > p:not(.blog-date) { color: var(--muted) !important; }
+
+/* Footer */
+footer {
+  background: #fff !important;
+  border-top: 1px solid var(--line) !important;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.footer-links a {
+  border: 1px solid var(--line) !important;
+  border-radius: 5px !important;
+  background: #fff !important;
+  color: #4e5c6d !important;
+}
+.footer-links a:hover {
+  background: var(--surface-soft) !important;
+  border-color: #c4d1da !important;
+}
+footer small { color: var(--muted) !important; }
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid #7895aa;
+  outline-offset: 4px;
+}
+@media (max-width: 800px) {
+  .nav { padding: 15px 22px !important; }
+  main { padding: 0 22px; }
+  section { padding: 60px 0 66px; }
+  .hero { min-height: 0; padding: 42px 0 28px; }
+  .picture { min-height: 280px; }
+  #cv .entry { grid-template-columns: minmax(110px, 145px) minmax(0, 1fr); gap: 18px; }
+}
+@media (max-width: 580px) {
+  .nav { gap: 12px; }
+  header nav { gap: 10px 16px; }
+  main { padding: 0 18px; }
+  section { padding: 48px 0 54px; }
+  #cv .entry { grid-template-columns: 1fr; gap: 5px; }
+  #research .project,
+  #publications .publication,
+  #publications .presentation-entry,
+  #outreach .project,
+  #outreach .outreach-card { padding: 17px 18px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+}
+
+
+
+/* CV refinement: boxed entries with consistent content alignment */
+#cv .section-intro {
+  max-width: 100% !important;
+  margin: 0 0 28px !important;
+}
+#cv > h3 {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+#cv .entry,
+#cv .entry:first-of-type,
+#cv .entry:hover {
+  display: grid !important;
+  grid-template-columns: minmax(145px, 190px) minmax(0, 1fr);
+  align-items: start;
+  gap: 22px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 12px !important;
+  padding: 19px 22px !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 9px !important;
+  background: #fff !important;
+  box-shadow: 0 2px 10px rgba(32,43,60,.035) !important;
+  transform: none !important;
+}
+#cv .entry-meta {
+  padding-top: 2px;
+  color: var(--muted) !important;
+}
+#cv .entry-title {
+  margin: 0 0 5px !important;
+  color: var(--ink) !important;
+}
+#cv .entry-detail {
+  color: #596678 !important;
+}
+#cv .entry-detail strong {
+  color: #344255 !important;
+}
+#cv .cv-subgroup-label {
+  margin: 18px 0 8px !important;
+}
+#cv .teaching-tags { margin-bottom: 20px; }
+@media (max-width: 580px) {
+  #cv .entry,
+  #cv .entry:first-of-type,
+  #cv .entry:hover {
+    grid-template-columns: 1fr;
+    gap: 5px;
+    padding: 16px 18px !important;
+  }
+}
+
+
+
+/* CV skills subsections: Teaching Areas and Methods & Tools use matching cards */
+#cv .teaching-tags,
+#cv .methods-tools,
+#cv .cv-skills-group,
+#cv .skills-group {
+  box-sizing: border-box;
+  padding: 18px 22px !important;
+  margin: 0 0 14px !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 9px !important;
+  background: #fff !important;
+  box-shadow: 0 2px 10px rgba(32,43,60,.035) !important;
+}
+#cv .teaching-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+#cv .teaching-tags .tag {
+  margin: 0 !important;
+}
+#cv .cv-subgroup-label {
+  display: block;
+  margin: 20px 0 9px !important;
+}
+#cv .cv-software-label {
+  margin-top: 20px !important;
+}
+
 </style>
 </head>
 <body>
@@ -1539,7 +2078,7 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
   <p class="eyebrow">Research Projects</p><h2>Research in Practice</h2>
   <div class="project">
    <div class="project-head"><h3><span class="project-number">01</span> DAYA: Preventive Digital Mental Health for Adolescents and Young Adults</h3><span class="project-status">Active Implementation</span></div>
-   <p class="project-meta">FRGS-funded RCT<br>Research Assistant · Universiti Putra Malaysia · Dec 2025–Present</p>
+   <p class="project-meta">Module Development &amp; RCT<br>Research Assistant · Universiti Putra Malaysia · <em>Dec 2025 – Present</em></p>
    <h4>Academic &amp; Methodological Focus</h4>
    <p>Supported a web-based preventive intervention for adolescents and young adults, including CBT- and behavioural activation-based modules, study coordination, and ethics documentation.</p>
    <h4>Public Takeaway &amp; Societal Relevance</h4>
@@ -1549,7 +2088,7 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
 
   <div class="project">
    <div class="project-head"><h3><span class="project-number">02</span> Parenting and Early Adolescent Mental Health</h3><span class="project-status">Completed Thesis & Published Study</span></div>
-   <p class="project-meta">Doctoral Research<br>PhD Researcher · Universiti Putra Malaysia · 2021 – 2026</p>
+   <p class="project-meta">Doctoral Research<br>PhD Researcher · Universiti Putra Malaysia · <em>2021 – 2026</em></p>
    <h4>Academic &amp; Methodological Focus</h4>
    <p>Examined how parental mental health, self-efficacy, and parenting behaviours relate to emotional-behavioural problems and competence among early adolescents in Malay families, using structural equation modelling.</p>
    <h4>Public Takeaway &amp; Societal Relevance</h4>
@@ -1559,7 +2098,7 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
 
   <div class="project">
    <div class="project-head"><h3><span class="project-number">03</span> Psychological First Aid for School Counsellors</h3><span class="project-status">Completed &amp; Delivered</span></div>
-   <p class="project-meta">Programme Evaluation<br>Project Officer · IIUM, Kuantan · 2023 – 2024 · Yayasan Hasanah-funded</p>
+   <p class="project-meta">Programme Evaluation<br>Project Officer · IIUM, Kuantan · <em>2023 – 2024</em> · Yayasan Hasanah-funded</p>
    <h4>Academic &amp; Methodological Focus</h4>
    <p>Contributed to programme coordination, evaluation, statistical analysis, and facilitation of training to strengthen school counsellors’ early psychological support skills.</p>
    <h4>Public Takeaway &amp; Societal Relevance</h4>
@@ -1569,7 +2108,7 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
 
   <div class="project">
    <div class="project-head"><h3><span class="project-number">04</span> DaPI: Digital-Assisted Parenting Intervention</h3><span class="project-status">Completed & Copyrighted</span></div>
-   <p class="project-meta">FRGS-funded RCT<br>Graduate Research Assistant · Universiti Putra Malaysia · 2021–2023</p>
+   <p class="project-meta">FRGS-funded RCT<br>Graduate Research Assistant · Universiti Putra Malaysia · <em>2021–2023</em></p>
    <h4>Academic &amp; Methodological Focus</h4>
    <p>Co-developed and evaluated a digital parenting intervention supporting adolescent mental health.</p>
    <h4>Public Takeaway &amp; Societal Relevance</h4>
@@ -1579,7 +2118,7 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
 
   <div class="project">
    <div class="project-head"><h3><span class="project-number">05</span> EEG Microstates and Quranic Recitation</h3><span class="project-status">Master's Thesis</span></div>
-   <p class="project-meta">Master’s Research<br>Master of Neuroscience · Universiti Sains Malaysia · 2019–2021</p>
+   <p class="project-meta">Master’s Research<br>Master of Neuroscience · Universiti Sains Malaysia · <em>2019–2021</em></p>
    <h4>Academic &amp; Methodological Focus</h4>
    <p>Explored EEG microstate patterns across Qur’anic and non-Qur’anic rhythmic recitation conditions, building experience in EEG, experimental research, and neurophysiological data analysis.</p>
    <h4>Public Takeaway &amp; Societal Relevance</h4>
@@ -1589,7 +2128,7 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
 
   <div class="project">
    <div class="project-head"><h3><span class="project-number">06</span> Sexuality Education for Adolescents with Intellectual Disabilities</h3><span class="project-status">Published Study</span></div>
-   <p class="project-meta">Undergraduate Research<br>Final-year research project · Universiti Malaysia Sarawak · 2018</p>
+   <p class="project-meta">Undergraduate Research<br>Final-year research project · Universiti Malaysia Sarawak · <em>2018</em></p>
    <h4>Academic &amp; Methodological Focus</h4>
    <p>Used semi-structured interviews to explore special education teachers’ experiences, challenges, and contextual considerations when teaching sexuality education to adolescents with intellectual disabilities.</p>
    <h4>Public Takeaway &amp; Societal Relevance</h4>
@@ -1911,9 +2450,16 @@ header nav a[aria-current="page"] { border-bottom:0 !important; text-decoration:
 
       const meta = make("p", "project-meta");
       const firstLine = [item.project_type, item.funding].filter(Boolean).join(" · ");
-      const secondLine = [item.role, item.institution, item.period].filter(Boolean).join(" · ");
+      const secondLine = [item.role, item.institution].filter(Boolean).join(" · ");
       if (firstLine) meta.textContent = firstLine;
       if (secondLine) appendLine(meta, secondLine);
+      if (item.period) {
+        const period = document.createElement("em");
+        period.textContent = item.period;
+        if (secondLine) meta.appendChild(document.createTextNode(" · "));
+        else if (firstLine) appendLine(meta, "");
+        meta.appendChild(period);
+      }
       if (meta.textContent) card.appendChild(meta);
 
       if (item.academic_focus) {
